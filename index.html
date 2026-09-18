@@ -1,220 +1,710 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fcd116">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FCD116">
+<title>Deutsch mit Andrea ❤️</title>
 
-  <title>Deutsch mit Andrea ❤️</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+body{background:#fff9e8;color:#202020}
+button{font:inherit}
+.app{max-width:700px;margin:auto;min-height:100vh;background:#fff9e8}
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+/* START */
+.hero{
+  height:52vh;
+  min-height:430px;
+  background-image:url("./IMG_4100.jpeg");
+  background-size:cover;
+  background-position:center 38%;
+  background-repeat:no-repeat;
+}
+.startBox{
+  text-align:center;
+  padding:24px 24px 45px;
+}
+.flags{font-size:27px;margin-bottom:5px}
+h1{font-size:34px;margin:4px 0 5px;font-weight:850}
+.subtitle{font-size:17px;color:#666;margin-bottom:18px}
+.badge{
+  display:inline-block;background:#FCD116;padding:8px 22px;
+  border-radius:30px;font-weight:800;margin:6px
+}
+.progressText{margin:12px;color:#666;font-size:15px}
+.mainButton{
+  width:100%;border:0;border-radius:20px;padding:18px;
+  background:#003893;color:white;font-size:20px;font-weight:800;
+  box-shadow:0 7px 17px rgba(0,0,0,.14);margin-top:12px
+}
+.mainButton:active,.option:active{transform:scale(.98)}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-    }
+/* HEADER */
+.topbar{
+  position:sticky;top:0;z-index:10;
+  background:#FCD116;padding:14px 17px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.back{
+  border:0;background:rgba(255,255,255,.7);
+  width:42px;height:42px;border-radius:50%;font-size:21px
+}
+.score{font-weight:800}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-      background: #fff9e8;
-      color: #222;
-    }
+/* CONTENT */
+.screen{display:none}
+.screen.active{display:block}
+.content{padding:22px}
+.lessonTitle{font-size:27px;font-weight:850;margin:4px 0}
+.lessonSub{color:#666;margin:5px 0 22px}
+.progressBar{
+  width:100%;height:9px;background:#e8e8e8;border-radius:20px;
+  overflow:hidden;margin:12px 0 22px
+}
+.progressFill{height:100%;background:#003893;width:0%;transition:.3s}
 
-    .app {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* CARDS */
+.card{
+  background:white;border-radius:20px;padding:20px;margin:15px 0;
+  box-shadow:0 4px 15px rgba(0,0,0,.08)
+}
+.card h3{margin-top:0}
+.german{font-size:22px;font-weight:800;color:#003893}
+.spanish{font-size:17px;color:#555;margin-top:5px}
+.tip{
+  background:#fff2b8;border-radius:15px;padding:15px;
+  margin:15px 0;line-height:1.45
+}
+.wordRow{
+  padding:13px 0;border-bottom:1px solid #eee
+}
+.wordRow:last-child{border:0}
+.word{font-size:19px;font-weight:800}
+.meaning{color:#666;margin-top:3px}
 
-    /* FOTO VON ANDREA & ALEX */
-    .hero {
-      min-height: 54vh;
+/* QUIZ */
+.question{
+  font-size:21px;font-weight:800;line-height:1.35;
+  margin-bottom:18px
+}
+.option{
+  width:100%;padding:16px;margin:7px 0;border:2px solid #e5e5e5;
+  border-radius:16px;background:white;text-align:left;font-size:17px
+}
+.correct{background:#dff6e5!important;border-color:#3ba55d!important}
+.wrong{background:#ffe2e2!important;border-color:#d63d3d!important}
+.feedback{
+  display:none;padding:16px;border-radius:15px;
+  margin:16px 0;font-weight:700
+}
+.nextButton{
+  display:none;width:100%;border:0;border-radius:17px;padding:17px;
+  background:#003893;color:white;font-weight:800;font-size:18px
+}
 
-      background-image:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,0.05) 20%,
-          rgba(0,0,0,0.60) 100%
-        ),
-        url("./IMG_4100.jpeg");
+/* LESSON LIST */
+.lessonItem{
+  background:white;border-radius:19px;padding:18px;margin:13px 0;
+  box-shadow:0 3px 12px rgba(0,0,0,.07)
+}
+.lessonNumber{font-size:13px;color:#777;font-weight:700}
+.lessonName{font-size:20px;font-weight:850;margin:5px 0}
+.lessonInfo{color:#666;font-size:15px}
+.lessonItem button{
+  width:100%;border:0;border-radius:14px;padding:13px;
+  margin-top:12px;background:#003893;color:white;font-weight:800
+}
+.completed{border:2px solid #47a764}
 
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+/* SUCCESS */
+.success{text-align:center;padding:45px 25px}
+.bigHeart{font-size:70px}
+.success h2{font-size:31px}
+.successPoints{font-size:25px;font-weight:850;color:#003893}
 
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-
-      text-align: center;
-      color: white;
-
-      padding: 35px 20px;
-    }
-
-    .flags {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      font-size: 38px;
-      line-height: 1.05;
-      margin: 0;
-      font-weight: 800;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
-    }
-
-    .subtitle {
-      font-size: 19px;
-      margin-top: 12px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.35);
-    }
-
-    .content {
-      flex: 1;
-      padding: 28px 22px 45px;
-      text-align: center;
-    }
-
-    .level {
-      display: inline-block;
-      background: #fcd116;
-      padding: 10px 25px;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 24px;
-    }
-
-    .welcome {
-      font-size: 22px;
-      line-height: 1.45;
-      margin-bottom: 28px;
-    }
-
-    .welcome strong {
-      font-size: 25px;
-    }
-
-    .start-button {
-      display: block;
-      width: 100%;
-      max-width: 440px;
-      margin: 0 auto;
-
-      border: none;
-      border-radius: 20px;
-
-      padding: 19px 20px;
-
-      background: #003893;
-      color: white;
-
-      font-size: 21px;
-      font-weight: 800;
-
-      cursor: pointer;
-
-      box-shadow: 0 8px 20px rgba(0,0,0,0.16);
-    }
-
-    .start-button:active {
-      transform: scale(0.98);
-    }
-
-    .motivation {
-      margin-top: 24px;
-      color: #666;
-      font-size: 15px;
-    }
-
-    .footer {
-      height: 8px;
-      background: #ce1126;
-      margin-top: auto;
-    }
-
-  </style>
+/* BOTTOM */
+.footerLine{height:7px;background:#CE1126}
+.small{font-size:14px;color:#777}
+</style>
 </head>
 
 <body>
+<div class="app">
 
-  <div class="app">
+<!-- START -->
+<section id="home" class="screen active">
+  <div class="hero"></div>
 
-    <section class="hero">
+  <div class="startBox">
+    <div class="flags">🇨🇴 ❤️ 🇩🇪</div>
+    <h1>Deutsch mit Andrea</h1>
+    <div class="subtitle">Tu camino hacia el alemán</div>
 
-      <div class="flags">
-        🇨🇴 ❤️ 🇩🇪
-      </div>
+    <div class="badge">Nivel A2</div>
 
-      <h1>
-        Deutsch mit Andrea
-      </h1>
+    <div class="progressText" id="homeProgress">
+      Empieza hoy tu camino A2 ❤️
+    </div>
 
-      <div class="subtitle">
-        Tu camino hacia el alemán
-      </div>
+    <button class="mainButton" onclick="showLessons()">
+      Empezar 🇩🇪
+    </button>
 
-    </section>
-
-
-    <main class="content">
-
-      <div class="level">
-        Nivel A2
-      </div>
-
-      <div class="welcome">
-
-        <strong>
-          Hola Andrea ❤️
-        </strong>
-
-        <br><br>
-
-        ¿Lista para aprender un poco de alemán hoy?
-
-      </div>
-
-
-      <button
-        class="start-button"
-        onclick="startLearning()"
-      >
-        Empezar 🇩🇪
-      </button>
-
-
-      <div class="motivation">
-        Paso a paso. Jeden Tag ein bisschen. ❤️
-      </div>
-
-    </main>
-
-
-    <div class="footer"></div>
-
+    <p class="small">Paso a paso. Jeden Tag ein bisschen. ❤️</p>
   </div>
 
+  <div class="footerLine"></div>
+</section>
 
-  <script>
+<!-- LESSON LIST -->
+<section id="lessons" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="goHome()">‹</button>
+    <strong>Deutsch A2</strong>
+    <div class="score">⭐ <span class="points">0</span></div>
+  </div>
 
-    function startLearning() {
+  <div class="content">
+    <h2>Hola Andrea ❤️</h2>
+    <p>Elige tu lección de hoy.</p>
 
-      alert(
-        "Super, Baby! ❤️\n\nAhora empezamos con tu primera lección A2."
-      );
+    <div id="lessonList"></div>
+  </div>
+</section>
 
-    }
+<!-- LEARNING -->
+<section id="learning" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="showLessons()">‹</button>
+    <strong id="headerLesson">Lección</strong>
+    <div class="score">⭐ <span class="points">0</span></div>
+  </div>
 
-  </script>
+  <div class="content">
+    <div class="lessonTitle" id="lessonTitle"></div>
+    <div class="lessonSub" id="lessonSubtitle"></div>
 
+    <div class="progressBar">
+      <div class="progressFill" id="learnProgress"></div>
+    </div>
+
+    <div id="learningContent"></div>
+
+    <button class="mainButton" onclick="startQuiz()">
+      Empezar el test →
+    </button>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="showLessons()">‹</button>
+    <strong>Test A2</strong>
+    <div class="score">⭐ <span class="points">0</span></div>
+  </div>
+
+  <div class="content">
+    <div class="progressBar">
+      <div class="progressFill" id="quizProgress"></div>
+    </div>
+
+    <div class="card">
+      <div class="question" id="question"></div>
+      <div id="answers"></div>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <button class="nextButton" id="nextButton" onclick="nextQuestion()">
+      Siguiente →
+    </button>
+  </div>
+</section>
+
+<!-- SUCCESS -->
+<section id="success" class="screen">
+  <div class="success">
+    <div class="bigHeart">❤️</div>
+    <h2>¡Muy bien, Andrea!</h2>
+
+    <p>Has terminado la lección.</p>
+
+    <div class="successPoints">
+      +<span id="earnedPoints">0</span> puntos ⭐
+    </div>
+
+    <div class="card">
+      <div class="german">Super gemacht!</div>
+      <div class="spanish">¡Lo has hecho genial!</div>
+      <p>🇨🇴 ❤️ 🇩🇪</p>
+    </div>
+
+    <button class="mainButton" onclick="showLessons()">
+      Continuar
+    </button>
+  </div>
+</section>
+
+</div>
+
+<script>
+
+/* ===============================
+   DATEN DER 6 A2-LEKTIONEN
+================================ */
+
+const lessons = [
+
+{
+ title:"Mein Alltag",
+ subtitle:"Mi rutina diaria · Verbos separables",
+ words:[
+  ["aufstehen","levantarse"],
+  ["frühstücken","desayunar"],
+  ["arbeiten","trabajar"],
+  ["einkaufen","hacer compras"],
+  ["nach Hause kommen","volver a casa"],
+  ["anfangen","empezar"]
+ ],
+ examples:[
+  ["Ich stehe um sieben Uhr auf.","Me levanto a las siete."],
+  ["Ich frühstücke jeden Morgen.","Desayuno todas las mañanas."],
+  ["Ich kaufe nach der Arbeit ein.","Hago compras después del trabajo."],
+  ["Ich komme um sechs Uhr nach Hause.","Vuelvo a casa a las seis."]
+ ],
+ grammar:"Los verbos separables se dividen en una oración principal: aufstehen → Ich stehe um 7 Uhr auf.",
+ quiz:[
+  ["Was bedeutet „aufstehen“?",["levantarse","dormir","trabajar"],0],
+  ["Ich ___ um sieben Uhr auf.",["stehe","steht","stehen"],0],
+  ["¿Qué significa „Ich kaufe ein“?",["Trabajo","Hago compras","Duermo"],1],
+  ["Wo steht „auf“? – Ich stehe um 7 Uhr ___.",["auf","an","ein"],0],
+  ["„nach Hause kommen“ significa…",["salir de casa","volver a casa","ir al trabajo"],1]
+ ]
+},
+
+{
+ title:"Termine & Uhrzeit",
+ subtitle:"Citas, horarios y planes",
+ words:[
+  ["der Termin","la cita"],
+  ["pünktlich","puntual"],
+  ["verschieben","aplazar"],
+  ["vereinbaren","acordar"],
+  ["Zeit haben","tener tiempo"],
+  ["sich treffen","encontrarse"]
+ ],
+ examples:[
+  ["Ich habe morgen einen Termin.","Tengo una cita mañana."],
+  ["Können wir den Termin verschieben?","¿Podemos aplazar la cita?"],
+  ["Wir treffen uns um halb acht.","Nos encontramos a las siete y media."],
+  ["Hast du am Freitag Zeit?","¿Tienes tiempo el viernes?"]
+ ],
+ grammar:"En alemán, „halb acht“ significa 7:30, literalmente media hora antes de las ocho.",
+ quiz:[
+  ["„der Termin“ significa…",["la cita","el tren","la tienda"],0],
+  ["Was bedeutet „halb acht“?",["8:30","7:30","7:15"],1],
+  ["Können wir den Termin ___?",["verschieben","schlafen","essen"],0],
+  ["„pünktlich“ significa…",["tarde","rápido","puntual"],2],
+  ["Hast du morgen ___?",["Zeit","Haus","Zug"],0]
+ ]
+},
+
+{
+ title:"Einkaufen",
+ subtitle:"Compras, precios y comparaciones",
+ words:[
+  ["günstig","económico"],
+  ["teuer","caro"],
+  ["bezahlen","pagar"],
+  ["kosten","costar"],
+  ["umtauschen","cambiar/devolver"],
+  ["die Rechnung","la cuenta / factura"]
+ ],
+ examples:[
+  ["Wie viel kostet das?","¿Cuánto cuesta eso?"],
+  ["Das ist mir zu teuer.","Eso es demasiado caro para mí."],
+  ["Kann ich mit Karte bezahlen?","¿Puedo pagar con tarjeta?"],
+  ["Ich möchte das umtauschen.","Quiero cambiar/devolver esto."]
+ ],
+ grammar:"Para comparar usamos: günstig → günstiger; teuer → teurer. Beispiel: Dieses Hotel ist günstiger.",
+ quiz:[
+  ["„günstig“ bedeutet…",["económico","caro","cerrado"],0],
+  ["Wie viel ___ das?",["kostet","bezahlt","kauft"],0],
+  ["Ich möchte mit Karte ___.",["bezahlen","fahren","sprechen"],0],
+  ["„teurer“ significa…",["más barato","más caro","más pequeño"],1],
+  ["Ich möchte das ___.",["umtauschen","aufstehen","treffen"],0]
+ ]
+},
+
+{
+ title:"Reisen & Orientierung",
+ subtitle:"Viajes, trenes y direcciones",
+ words:[
+  ["der Bahnhof","la estación"],
+  ["umsteigen","hacer transbordo"],
+  ["aussteigen","bajarse"],
+  ["die Verspätung","el retraso"],
+  ["geradeaus","todo recto"],
+  ["die Richtung","la dirección"]
+ ],
+ examples:[
+  ["Wo muss ich umsteigen?","¿Dónde tengo que hacer transbordo?"],
+  ["Wir steigen in Zürich aus.","Nos bajamos en Zúrich."],
+  ["Der Zug hat Verspätung.","El tren tiene retraso."],
+  ["Gehen Sie geradeaus.","Siga todo recto."]
+ ],
+ grammar:"Con los verbos modales, el infinitivo va al final: Wo muss ich aussteigen?",
+ quiz:[
+  ["„Verspätung“ bedeutet…",["retraso","billete","estación"],0],
+  ["Wo muss ich ___?",["umsteigen","bezahlen","frühstücken"],0],
+  ["Der Zug hat ___.",["Richtung","Verspätung","Rechnung"],1],
+  ["„geradeaus“ significa…",["a la izquierda","todo recto","atrás"],1],
+  ["Wir ___ in Zürich aus.",["steigen","stehen","stellen"],0]
+ ]
+},
+
+{
+ title:"Was hast du gemacht?",
+ subtitle:"El pasado · Perfekt",
+ words:[
+  ["gemacht","hecho"],
+  ["gegessen","comido"],
+  ["gesehen","visto"],
+  ["gefahren","viajado / ido"],
+  ["gekauft","comprado"],
+  ["gesprochen","hablado"]
+ ],
+ examples:[
+  ["Ich habe heute gearbeitet.","He trabajado hoy."],
+  ["Wir haben zusammen gegessen.","Hemos comido juntos."],
+  ["Ich bin nach Berlin gefahren.","He ido a Berlín."],
+  ["Was hast du gestern gemacht?","¿Qué hiciste ayer?"]
+ ],
+ grammar:"El Perfekt normalmente usa haben + participio. Verbos de movimiento suelen usar sein: Ich bin gefahren.",
+ quiz:[
+  ["Ich ___ gestern gearbeitet.",["habe","bin","werde"],0],
+  ["Ich bin nach Berlin ___.",["gefahren","gemacht","gekauft"],0],
+  ["„gegessen“ significa…",["bebido","comido","visto"],1],
+  ["Was hast du gestern ___?",["gemacht","machen","macht"],0],
+  ["Wir ___ zusammen gegessen.",["sind","haben","werden"],1]
+ ]
+},
+
+{
+ title:"weil · dass · wenn",
+ subtitle:"Construir frases A2 más largas",
+ words:[
+  ["weil","porque"],
+  ["dass","que"],
+  ["wenn","si / cuando"],
+  ["müde","cansado/a"],
+  ["glücklich","feliz"],
+  ["lernen","aprender"]
+ ],
+ examples:[
+  ["Ich lerne Deutsch, weil ich in Deutschland lebe.","Aprendo alemán porque vivo en Alemania."],
+  ["Ich glaube, dass Deutsch interessant ist.","Creo que el alemán es interesante."],
+  ["Wenn ich Zeit habe, lerne ich Deutsch.","Cuando tengo tiempo, estudio alemán."],
+  ["Ich bin müde, weil ich viel gearbeitet habe.","Estoy cansada porque he trabajado mucho."]
+ ],
+ grammar:"Después de weil, dass y wenn, el verbo conjugado va normalmente al final de la oración subordinada.",
+ quiz:[
+  ["„weil“ significa…",["pero","porque","aunque"],1],
+  ["Ich lerne Deutsch, weil ich in Deutschland ___.",["lebe","leben","lebt"],0],
+  ["Ich glaube, ___ Deutsch interessant ist.",["weil","dass","oder"],1],
+  ["Wenn ich Zeit ___, lerne ich Deutsch.",["habe","bin","hat"],0],
+  ["Wo steht das Verb im Nebensatz?",["am Anfang","normalmente al final","siempre en segunda posición"],1]
+ ]
+}
+
+];
+
+
+/* ===============================
+   STATUS
+================================ */
+
+let currentLesson = 0;
+let currentQuestion = 0;
+let lessonScore = 0;
+
+let totalPoints =
+ parseInt(localStorage.getItem("andreaPoints") || "0");
+
+let completed =
+ JSON.parse(localStorage.getItem("andreaCompleted") || "[]");
+
+
+function updatePoints(){
+ document.querySelectorAll(".points")
+ .forEach(el=>el.textContent=totalPoints);
+}
+
+
+/* ===============================
+   NAVIGATION
+================================ */
+
+function showScreen(id){
+ document.querySelectorAll(".screen")
+ .forEach(s=>s.classList.remove("active"));
+
+ document.getElementById(id).classList.add("active");
+
+ window.scrollTo(0,0);
+}
+
+function goHome(){
+ updateHome();
+ showScreen("home");
+}
+
+function showLessons(){
+ renderLessonList();
+ updatePoints();
+ showScreen("lessons");
+}
+
+
+/* ===============================
+   HOME
+================================ */
+
+function updateHome(){
+
+ const el=document.getElementById("homeProgress");
+
+ if(completed.length===0){
+   el.textContent="Empieza hoy tu camino A2 ❤️";
+ }else{
+   el.textContent=
+   completed.length+" de "+lessons.length+
+   " lecciones completadas · ⭐ "+totalPoints;
+ }
+}
+
+
+/* ===============================
+   LEKTIONEN
+================================ */
+
+function renderLessonList(){
+
+ const box=document.getElementById("lessonList");
+ box.innerHTML="";
+
+ lessons.forEach((l,i)=>{
+
+   const done=completed.includes(i);
+
+   const div=document.createElement("div");
+   div.className="lessonItem "+(done?"completed":"");
+
+   div.innerHTML=`
+    <div class="lessonNumber">
+      LECCIÓN ${i+1} DE ${lessons.length}
+      ${done?" · ✅ COMPLETADA":""}
+    </div>
+
+    <div class="lessonName">${l.title}</div>
+    <div class="lessonInfo">${l.subtitle}</div>
+
+    <button onclick="openLesson(${i})">
+      ${done?"Repetir":"Aprender"} →
+    </button>
+   `;
+
+   box.appendChild(div);
+ });
+}
+
+
+function openLesson(index){
+
+ currentLesson=index;
+
+ const l=lessons[index];
+
+ document.getElementById("headerLesson").textContent=
+ "Lección "+(index+1);
+
+ document.getElementById("lessonTitle").textContent=l.title;
+ document.getElementById("lessonSubtitle").textContent=l.subtitle;
+
+ document.getElementById("learnProgress").style.width="50%";
+
+ let html=`
+ <div class="card">
+   <h3>📚 Vocabulario</h3>
+ `;
+
+ l.words.forEach(w=>{
+   html+=`
+    <div class="wordRow">
+      <div class="word">${w[0]}</div>
+      <div class="meaning">${w[1]}</div>
+    </div>
+   `;
+ });
+
+ html+=`</div>
+
+ <div class="card">
+   <h3>💬 Ejemplos</h3>
+ `;
+
+ l.examples.forEach(e=>{
+   html+=`
+    <div class="wordRow">
+      <div class="german">${e[0]}</div>
+      <div class="spanish">${e[1]}</div>
+    </div>
+   `;
+ });
+
+ html+=`
+ </div>
+
+ <div class="tip">
+   <strong>💡 Gramática</strong><br><br>
+   ${l.grammar}
+ </div>
+ `;
+
+ document.getElementById("learningContent").innerHTML=html;
+
+ showScreen("learning");
+}
+
+
+/* ===============================
+   QUIZ
+================================ */
+
+function startQuiz(){
+
+ currentQuestion=0;
+ lessonScore=0;
+
+ showScreen("quiz");
+ renderQuestion();
+}
+
+
+function renderQuestion(){
+
+ const quiz=lessons[currentLesson].quiz;
+ const q=quiz[currentQuestion];
+
+ document.getElementById("quizProgress").style.width=
+ ((currentQuestion)/quiz.length*100)+"%";
+
+ document.getElementById("question").innerHTML=
+ `Pregunta ${currentQuestion+1} de ${quiz.length}<br><br>${q[0]}`;
+
+ const answers=document.getElementById("answers");
+ answers.innerHTML="";
+
+ q[1].forEach((answer,index)=>{
+
+   const button=document.createElement("button");
+   button.className="option";
+   button.textContent=answer;
+
+   button.onclick=()=>answerQuestion(button,index,q[2]);
+
+   answers.appendChild(button);
+ });
+
+ document.getElementById("feedback").style.display="none";
+ document.getElementById("nextButton").style.display="none";
+}
+
+
+function answerQuestion(button,selected,correct){
+
+ const buttons=document.querySelectorAll(".option");
+
+ buttons.forEach(b=>b.disabled=true);
+
+ const feedback=document.getElementById("feedback");
+
+ if(selected===correct){
+
+   button.classList.add("correct");
+
+   feedback.innerHTML="❤️ ¡Muy bien! <strong>Richtig!</strong>";
+   feedback.style.background="#dff6e5";
+
+   lessonScore+=10;
+
+ }else{
+
+   button.classList.add("wrong");
+   buttons[correct].classList.add("correct");
+
+   feedback.innerHTML=
+   "Casi ❤️ Mira la respuesta correcta y recuérdala para la próxima vez.";
+
+   feedback.style.background="#ffe9c9";
+ }
+
+ feedback.style.display="block";
+
+ document.getElementById("nextButton").style.display="block";
+}
+
+
+function nextQuestion(){
+
+ const quiz=lessons[currentLesson].quiz;
+
+ currentQuestion++;
+
+ if(currentQuestion<quiz.length){
+   renderQuestion();
+ }else{
+   finishLesson();
+ }
+}
+
+
+/* ===============================
+   ERFOLG
+================================ */
+
+function finishLesson(){
+
+ totalPoints+=lessonScore;
+
+ localStorage.setItem("andreaPoints",totalPoints);
+
+ if(!completed.includes(currentLesson)){
+   completed.push(currentLesson);
+   localStorage.setItem(
+     "andreaCompleted",
+     JSON.stringify(completed)
+   );
+ }
+
+ document.getElementById("earnedPoints").textContent=lessonScore;
+
+ updatePoints();
+
+ showScreen("success");
+}
+
+
+/* ===============================
+   START
+================================ */
+
+updatePoints();
+updateHome();
+
+</script>
 </body>
 </html>
