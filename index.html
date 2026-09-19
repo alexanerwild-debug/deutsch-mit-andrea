@@ -18,14 +18,24 @@ button{font:inherit;cursor:pointer}
 .screen{display:none;min-height:100vh}
 .screen.active{display:block}
 
+/* Startfoto: komplett sichtbar */
 .hero{
-  height:48vh;min-height:390px;
-  background:url("./IMG_4100.jpeg") center 38%/cover no-repeat
+  width:100%;
+  height:auto;
+  aspect-ratio:3/4;
+  max-height:72vh;
+  background-image:url("./IMG_4100.jpeg");
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:#fff9ed;
 }
-.start{text-align:center;padding:22px 22px 40px}
+
+.start{text-align:center;padding:20px 22px 40px}
 .flags{font-size:29px}
 h1{font-size:34px;margin:8px 0 3px}
 .sub{color:#666;line-height:1.45}
+.spanish{color:#666;font-size:17px;line-height:1.5}
 .badge{
   display:inline-block;background:#FCD116;padding:8px 20px;
   border-radius:30px;font-weight:800;margin:13px
@@ -43,13 +53,14 @@ h1{font-size:34px;margin:8px 0 3px}
 .top{
   position:sticky;top:0;z-index:10;background:#FCD116;
   padding:12px 15px;display:flex;align-items:center;
-  justify-content:space-between
+  justify-content:space-between;gap:8px
 }
+.topTitle{text-align:center;font-weight:850;font-size:15px}
 .back{
   border:0;background:#fff;border-radius:50%;
-  width:42px;height:42px;font-size:23px
+  width:42px;height:42px;font-size:23px;flex-shrink:0
 }
-.hcount{font-weight:900;color:#a71930}
+.hcount{font-weight:900;color:#a71930;white-space:nowrap}
 .content{padding:20px}
 
 .lesson,.card,.reward,.balance{
@@ -97,7 +108,11 @@ h1{font-size:34px;margin:8px 0 3px}
   box-shadow:0 5px 17px rgba(0,0,0,.12)
 }
 .memory img{
-  width:100%;max-height:450px;object-fit:cover;border-radius:15px
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  background:#eee;
+  border-radius:15px
 }
 .memory p{font-weight:800;margin:10px}
 
@@ -126,7 +141,6 @@ h1{font-size:34px;margin:8px 0 3px}
 <body>
 <div class="app">
 
-<!-- START -->
 <section id="home" class="screen active">
   <div class="hero"></div>
 
@@ -142,51 +156,48 @@ h1{font-size:34px;margin:8px 0 3px}
     </div>
     <div class="small">Tus corazones</div>
 
-    <button class="main" onclick="showLessons()">Weiterlernen 🇩🇪</button>
+    <button class="main" onclick="showLessons()">Weiterlernen · Seguir aprendiendo 🇩🇪</button>
     <button class="secondary" onclick="showRewards()">🎁 Mis recompensas</button>
 
     <p class="small" id="homeInfo"></p>
   </div>
 </section>
 
-<!-- LEKTIONEN -->
 <section id="lessons" class="screen">
   <div class="top">
     <button class="back" onclick="goHome()">‹</button>
-    <b>Deutsch A2</b>
+    <div class="topTitle">Deutsch A2<br><span class="small">Curso A2</span></div>
     <span class="hcount">❤️ <span class="hearts">0</span></span>
   </div>
 
   <div class="content">
     <h2>Dein A2-Kurs 🇩🇪</h2>
-    <p class="sub">Paso a paso hacia un alemán mejor. ❤️</p>
+    <p class="spanish">Tu curso A2 · Paso a paso hacia un alemán mejor. ❤️</p>
     <div id="lessonList"></div>
   </div>
 </section>
 
-<!-- LERNEN -->
 <section id="learn" class="screen">
   <div class="top">
     <button class="back" onclick="showLessons()">‹</button>
-    <b id="learnNumber">Lektion</b>
+    <div class="topTitle" id="learnNumber">Lektion · Lección</div>
     <span class="hcount">❤️ <span class="hearts">0</span></span>
   </div>
 
   <div class="content">
     <h2 id="learnTitle"></h2>
-    <p class="sub" id="learnSpanish"></p>
+    <p class="spanish" id="learnSpanish"></p>
 
     <div id="learnContent"></div>
 
-    <button class="main" onclick="startQuiz()">Empezar el test →</button>
+    <button class="main" onclick="startQuiz()">Test starten · Empezar el test →</button>
   </div>
 </section>
 
-<!-- QUIZ -->
 <section id="quiz" class="screen">
   <div class="top">
     <button class="back" onclick="showLessons()">‹</button>
-    <b>Quiz</b>
+    <div class="topTitle">Quiz<br><span class="small">Prueba</span></div>
     <span class="hcount">❤️ <span class="hearts">0</span></span>
   </div>
 
@@ -203,54 +214,55 @@ h1{font-size:34px;margin:8px 0 3px}
 
     <div id="memory" class="memory">
       <img id="memoryImg" alt="Recuerdo">
-      <p>Un pequeño recuerdo para ti ❤️</p>
+      <p>Ein schöner Moment für dich ❤️<br>
+      <span class="small">Un bonito recuerdo para ti</span></p>
     </div>
 
     <button id="next" class="main" style="display:none" onclick="nextQuestion()">
-      Siguiente →
+      Weiter · Siguiente →
     </button>
   </div>
 </section>
 
-<!-- ERFOLG -->
 <section id="success" class="screen">
   <div class="success">
     <div class="bigHeart">❤️</div>
     <h2>¡Muy bien, Andrea!</h2>
-    <p>Du hast die Lektion geschafft.</p>
+    <p><b>Du hast die Lektion geschafft!</b><br>
+    ¡Has completado la lección!</p>
 
     <div id="earned" class="heartsBig"></div>
 
     <div class="memory" style="display:block">
       <img id="successImg" alt="Recuerdo">
-      <p>Ein schöner Moment für dich ❤️</p>
+      <p>Ein schöner Moment für dich ❤️<br>
+      <span class="small">Un bonito recuerdo para ti</span></p>
     </div>
 
-    <button class="main" onclick="showLessons()">Weiterlernen 🇩🇪</button>
+    <button class="main" onclick="showLessons()">Weiterlernen · Seguir aprendiendo 🇩🇪</button>
     <button class="secondary" onclick="showRewards()">🎁 Mis recompensas</button>
   </div>
 </section>
 
-<!-- BELOHNUNGEN -->
 <section id="rewards" class="screen">
   <div class="top">
     <button class="back" onclick="goHome()">‹</button>
-    <b>Mis recompensas</b>
+    <div class="topTitle">Belohnungen<br><span class="small">Recompensas</span></div>
     <span>🎁</span>
   </div>
 
   <div class="content">
     <div class="balance">
-      <div>Tienes</div>
+      <div>Deine Herzen · Tus corazones</div>
       <strong>❤️ <span class="hearts">0</span></strong>
       <p class="small">
-        Aprende alemán y guarda tus corazones para algo especial.
+        Aprende alemán y guarda tus corazones para algo especial. ❤️
       </p>
     </div>
 
     <div id="rewardList"></div>
 
-    <h3>Ya canjeado</h3>
+    <h3>Eingelöst · Ya canjeado</h3>
     <div id="history"></div>
   </div>
 </section>
@@ -259,55 +271,57 @@ h1{font-size:34px;margin:8px 0 3px}
 
 <script>
 
-/* =========================
-   SPEICHER
-========================= */
+/* SPEICHER */
 
 let hearts = Number(localStorage.getItem("andreaHearts")) || 0;
-
-let completed =
-  JSON.parse(localStorage.getItem("andreaCompleted") || "[]");
-
-let rewardHistory =
-  JSON.parse(localStorage.getItem("andreaRewards") || "[]");
+let completed = JSON.parse(localStorage.getItem("andreaCompleted") || "[]");
+let rewardHistory = JSON.parse(localStorage.getItem("andreaRewards") || "[]");
 
 
-/* =========================
-   ALEX' STIMME
-   Wird später aktiviert.
-========================= */
+/* ALEX' ECHTE SPRACHAUFNAHMEN */
 
 const alexVoice = {
   correct:[
-    "super-baby.m4a",
-    "sehr-gut-andrea.m4a",
-    "perfekt.m4a",
-    "weiter-so-mi-amor.m4a"
+    "Super Baby.m4a",
+    "Te Quiero.m4a",
+    "Amazing job.m4a",
+    "Wow, your so smart.m4a",
+    "A big kiss or you.m4a",
+    "Das war wirklich super.m4a",
+    "Ich bin sehr stolz auf Dich.m4a"
   ],
+
   lesson:[
-    "stolz-auf-dich.m4a",
-    "richtig-gut-gemacht.m4a"
+    "Ich bin sehr stolz auf Dich.m4a",
+    "Das war wirklich super.m4a",
+    "Te Quiero.m4a",
+    "A big kiss or you.m4a",
+    "Amazing job.m4a"
   ]
 };
 
-const voiceEnabled = false;
+let lastVoice = "";
 
 function playAlex(type){
-  if(!voiceEnabled) return;
-
-  const list=alexVoice[type];
+  const list = alexVoice[type];
   if(!list || !list.length) return;
 
-  const file=list[Math.floor(Math.random()*list.length)];
-  new Audio(file).play().catch(()=>{});
+  let choices = list.filter(file => file !== lastVoice);
+  if(!choices.length) choices = list;
+
+  const file = choices[Math.floor(Math.random()*choices.length)];
+  lastVoice = file;
+
+  const audio = new Audio(encodeURI(file));
+  audio.volume = 1;
+
+  audio.play().catch(err=>{
+    console.log("Audio konnte nicht abgespielt werden",err);
+  });
 }
 
 
-/* =========================
-   FOTOS
-   NUR DATEIEN, DIE WIR
-   IM REPOSITORY GESEHEN HABEN
-========================= */
+/* FOTOS */
 
 const photos = [
   "IMG_1700.jpeg",
@@ -347,16 +361,23 @@ function getPhoto(){
 }
 
 
-/* =========================
-   A2 LEKTIONEN
-========================= */
+/* LEKTIONEN */
 
-const lessons = [
+function L(title,es,grammar,grammarEs,words,examples,quiz){
+  return {title,es,grammar,grammarEs,words,examples,quiz};
+}
+
+function Q(text,answers,correct){
+  return [text,answers,correct];
+}
+
+const lessons=[
 
 L(
 "Mein Alltag",
 "Mi rutina diaria",
 "Trennbare Verben: Das Präfix steht im Hauptsatz am Ende.",
+"Verbos separables: el prefijo va al final de la oración principal.",
 [
 ["aufstehen","levantarse"],
 ["frühstücken","desayunar"],
@@ -381,6 +402,7 @@ L(
 "Termine & Uhrzeit",
 "Citas, horarios y planes",
 "Für Uhrzeiten benutzen wir meistens „um“.",
+"Para indicar una hora concreta normalmente usamos «um».",
 [
 ["der Termin","la cita"],
 ["pünktlich","puntual"],
@@ -405,6 +427,7 @@ L(
 "Einkaufen",
 "Compras y precios",
 "Komparativ: günstig → günstiger, teuer → teurer.",
+"Comparativo: günstig → günstiger, teuer → teurer.",
 [
 ["günstig","económico"],
 ["teuer","caro"],
@@ -429,6 +452,7 @@ L(
 "Im Restaurant",
 "En el restaurante",
 "Höfliche Wünsche: „Ich hätte gern …“",
+"Para pedir algo de forma educada usamos «Ich hätte gern …».",
 [
 ["bestellen","pedir"],
 ["die Speisekarte","el menú"],
@@ -453,6 +477,7 @@ L(
 "Wohnen",
 "Vivienda y hogar",
 "Nach „mit“ steht der Dativ.",
+"Después de «mit» usamos el dativo.",
 [
 ["die Wohnung","el apartamento"],
 ["die Miete","el alquiler"],
@@ -477,6 +502,7 @@ L(
 "Reisen & Bahn",
 "Viajes, trenes y transporte",
 "Modalverb + Infinitiv: Der Infinitiv steht am Satzende.",
+"Con un verbo modal, el infinitivo va al final.",
 [
 ["der Bahnhof","la estación"],
 ["umsteigen","hacer transbordo"],
@@ -501,6 +527,7 @@ L(
 "Wegbeschreibung",
 "Preguntar y explicar el camino",
 "Imperativ und Richtungsangaben helfen bei Wegbeschreibungen.",
+"Usamos el imperativo y expresiones de dirección para explicar el camino.",
 [
 ["geradeaus","todo recto"],
 ["links","izquierda"],
@@ -525,6 +552,7 @@ L(
 "Arbeit & Beruf",
 "Trabajo y profesión",
 "Modalverben: müssen, können, dürfen.",
+"Verbos modales importantes: müssen, können y dürfen.",
 [
 ["der Beruf","la profesión"],
 ["die Bewerbung","la solicitud"],
@@ -549,6 +577,7 @@ L(
 "Telefonieren",
 "Hablar por teléfono",
 "Am Telefon benutzen wir oft höfliche Fragen.",
+"Por teléfono usamos con frecuencia preguntas corteses.",
 [
 ["anrufen","llamar"],
 ["zurückrufen","devolver la llamada"],
@@ -573,6 +602,7 @@ L(
 "Beim Arzt",
 "En el médico",
 "„seit“ beschreibt etwas, das in der Vergangenheit begann und noch gilt.",
+"«seit» indica algo que empezó en el pasado y continúa.",
 [
 ["die Schmerzen","los dolores"],
 ["krank","enfermo"],
@@ -597,6 +627,7 @@ L(
 "Körper & Gesundheit",
 "El cuerpo y la salud",
 "Reflexive Verben: ich fühle mich, du fühlst dich.",
+"Verbos reflexivos: ich fühle mich, du fühlst dich.",
 [
 ["sich fühlen","sentirse"],
 ["der Rücken","la espalda"],
@@ -621,6 +652,7 @@ L(
 "Kleidung",
 "Ropa y apariencia",
 "Mit „passen“ sagen wir, ob Kleidung die richtige Größe hat.",
+"Con «passen» decimos si una prenda queda bien.",
 [
 ["die Jacke","la chaqueta"],
 ["das Kleid","el vestido"],
@@ -645,6 +677,7 @@ L(
 "Wetter",
 "El tiempo",
 "Für Wetter benutzen wir oft das unpersönliche „es“.",
+"Para hablar del tiempo usamos frecuentemente «es».",
 [
 ["sonnig","soleado"],
 ["bewölkt","nublado"],
@@ -669,6 +702,7 @@ L(
 "Freizeit",
 "Tiempo libre",
 "gern → lieber → am liebsten.",
+"gern → lieber → am liebsten expresa distintos grados de preferencia.",
 [
 ["spazieren gehen","pasear"],
 ["Sport treiben","hacer deporte"],
@@ -693,6 +727,7 @@ L(
 "Gefühle & Beziehungen",
 "Sentimientos y relaciones",
 "Mit „dass“ steht das konjugierte Verb am Ende.",
+"Con «dass», el verbo conjugado va al final.",
 [
 ["glücklich","feliz"],
 ["traurig","triste"],
@@ -717,6 +752,7 @@ L(
 "Einladungen",
 "Invitaciones y encuentros",
 "Mit „würde“ und „könnte“ klingen Wünsche höflicher.",
+"«würde» y «könnte» hacen que una petición suene más cortés.",
 [
 ["einladen","invitar"],
 ["die Einladung","la invitación"],
@@ -741,6 +777,7 @@ L(
 "Perfekt mit haben",
 "El pasado con haben",
 "haben + Partizip II.",
+"Para muchos verbos formamos el pasado con haben + participio.",
 [
 ["gemacht","hecho"],
 ["gekauft","comprado"],
@@ -765,6 +802,7 @@ L(
 "Perfekt mit sein",
 "El pasado con sein",
 "Bei Bewegung und Zustandswechsel benutzen wir oft „sein“.",
+"Con movimientos y cambios de estado usamos frecuentemente «sein».",
 [
 ["gefahren","viajado/conducido"],
 ["gegangen","ido"],
@@ -787,8 +825,9 @@ Q("fliegen →",["geflogen","gefliegt","gefliegen"],0)
 
 L(
 "Präteritum",
-"Pasado de sein, haben y modales",
+"Pasado de sein, haben y verbos modales",
 "Im Alltag sind war, hatte, konnte, musste und wollte sehr wichtig.",
+"Estas formas del pasado son muy importantes: war, hatte, konnte, musste y wollte.",
 [
 ["war","era/estaba"],
 ["hatte","tenía"],
@@ -813,6 +852,7 @@ L(
 "Akkusativ & Dativ",
 "Acusativo y dativo",
 "Beispiel: Ich gebe DEM Mann DEN Schlüssel.",
+"Ejemplo: Ich gebe DEM Mann DEN Schlüssel.",
 [
 ["geben","dar"],
 ["helfen","ayudar"],
@@ -837,6 +877,7 @@ L(
 "Wechselpräpositionen",
 "Lugar y movimiento",
 "Wo? = Dativ. Wohin? = Akkusativ.",
+"¿Dónde? = dativo. ¿Hacia dónde? = acusativo.",
 [
 ["auf","sobre"],
 ["unter","debajo"],
@@ -861,6 +902,7 @@ L(
 "Reflexive Verben",
 "Verbos reflexivos",
 "ich freue mich · du freust dich · wir freuen uns.",
+"Los pronombres reflexivos cambian según la persona.",
 [
 ["sich freuen","alegrarse"],
 ["sich erinnern","acordarse"],
@@ -883,8 +925,9 @@ Q("sich erinnern =",["acordarse","olvidar","comprar"],0)
 
 L(
 "Vergleichen",
-"Comparativo y superlativo",
+"Comparar",
 "gut → besser → am besten.",
+"gut → besser → am besten corresponde a bueno → mejor → el mejor.",
 [
 ["besser","mejor"],
 ["größer","más grande"],
@@ -907,8 +950,9 @@ Q("Superlativ von gut =",["am besten","am guter","besser"],0)
 
 L(
 "weil & dass",
-"Frases subordinadas",
+"Oraciones subordinadas con weil y dass",
 "Nach weil und dass steht das konjugierte Verb am Ende.",
+"Después de «weil» y «dass», el verbo conjugado va al final.",
 [
 ["weil","porque"],
 ["dass","que"],
@@ -933,6 +977,7 @@ L(
 "wenn",
 "Cuando y si",
 "„wenn“ benutzen wir für Bedingungen und wiederholte Situationen.",
+"Usamos «wenn» para condiciones y situaciones repetidas.",
 [
 ["wenn","si/cuando"],
 ["immer","siempre"],
@@ -957,6 +1002,7 @@ L(
 "deshalb & trotzdem",
 "Por eso y sin embargo",
 "Nach deshalb/trotzdem kommt das Verb direkt danach.",
+"Después de deshalb/trotzdem aparece directamente el verbo.",
 [
 ["deshalb","por eso"],
 ["trotzdem","sin embargo"],
@@ -981,6 +1027,7 @@ L(
 "Relativsätze",
 "Oraciones relativas",
 "Relativpronomen + Verb am Ende.",
+"En una oración relativa, el verbo va al final.",
 [
 ["der","el que"],
 ["die","la que"],
@@ -1005,6 +1052,7 @@ L(
 "Verben mit Präpositionen",
 "Verbos con preposición",
 "Viele deutsche Verben haben eine feste Präposition.",
+"Muchos verbos alemanes utilizan una preposición fija.",
 [
 ["warten auf","esperar a"],
 ["denken an","pensar en"],
@@ -1029,6 +1077,7 @@ L(
 "Adjektivendungen",
 "Terminaciones de adjetivos",
 "Zum Beispiel: ein guter Kaffee · eine schöne Stadt · ein neues Auto.",
+"Ejemplos: ein guter Kaffee · eine schöne Stadt · ein neues Auto.",
 [
 ["schön","bonito"],
 ["neu","nuevo"],
@@ -1053,6 +1102,7 @@ L(
 "Pläne & Zukunft",
 "Planes y futuro",
 "werden + Infinitiv oder Präsens für feste Pläne.",
+"Podemos usar werden + infinitivo o el presente para planes concretos.",
 [
 ["planen","planear"],
 ["vorhaben","tener pensado"],
@@ -1077,6 +1127,7 @@ L(
 "Behörden & Formulare",
 "Administración y formularios",
 "Formelle Sprache ist für Alltag und Behörden wichtig.",
+"El lenguaje formal es importante para trámites y situaciones oficiales.",
 [
 ["der Antrag","la solicitud"],
 ["ausfüllen","rellenar"],
@@ -1101,6 +1152,7 @@ L(
 "Probleme lösen",
 "Resolver problemas",
 "Höfliche Beschwerden und Bitten.",
+"Aprendemos a expresar problemas, peticiones y reclamaciones de forma educada.",
 [
 ["das Problem","el problema"],
 ["kaputt","roto"],
@@ -1125,6 +1177,7 @@ L(
 "A2 Abschluss",
 "Repaso y preparación final",
 "Jetzt kombinierst du Alltag, Vergangenheit, Nebensätze und Kommunikation.",
+"Ahora combinas situaciones cotidianas, pasado, oraciones subordinadas y comunicación.",
 [
 ["die Erfahrung","la experiencia"],
 ["erzählen","contar"],
@@ -1148,39 +1201,22 @@ Q("verbessern =",["mejorar","empeorar","olvidar"],0)
 ];
 
 
-/* Helfer für Lektionen */
-
-function L(title,es,grammar,words,examples,quiz){
-  return {title,es,grammar,words,examples,quiz};
-}
-
-function Q(text,answers,correct){
-  return [text,answers,correct];
-}
-
-
-/* =========================
-   BELOHNUNGEN
-========================= */
+/* BELOHNUNGEN */
 
 const rewards=[
-  {name:"🍦 Eis mit Alex",price:200},
-  {name:"💆‍♀️ Massage von Alex",price:400},
-  {name:"🎬 Du bestimmst unseren gemeinsamen Abend",price:600},
-  {name:"🍽️ Romantisches Dinner mit Alex",price:800},
-  {name:"🔥 Tiempo íntimo con Alex",price:1000},
-  {name:"🎁 Große Überraschung von Alex",price:1500}
+  {name:"🍦 Eis mit Alex",es:"Helado con Alex",price:200},
+  {name:"💆‍♀️ Massage von Alex",es:"Masaje de Alex",price:400},
+  {name:"🎬 Du bestimmst unseren gemeinsamen Abend",es:"Tú eliges nuestro plan de la noche",price:600},
+  {name:"🍽️ Romantisches Dinner mit Alex",es:"Cena romántica con Alex",price:800},
+  {name:"🔥 Intime Zeit mit Alex",es:"Tiempo íntimo con Alex",price:1000},
+  {name:"🎁 Große Überraschung von Alex",es:"Gran sorpresa de Alex",price:1500}
 ];
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
 function screen(id){
-  document.querySelectorAll(".screen")
-    .forEach(x=>x.classList.remove("active"));
-
+  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   window.scrollTo(0,0);
   updateHearts();
@@ -1202,13 +1238,10 @@ function showRewards(){
 }
 
 
-/* =========================
-   HERZEN
-========================= */
+/* HERZEN */
 
 function updateHearts(){
-  document.querySelectorAll(".hearts")
-    .forEach(x=>x.textContent=hearts);
+  document.querySelectorAll(".hearts").forEach(x=>x.textContent=hearts);
 }
 
 function saveHearts(){
@@ -1222,20 +1255,18 @@ function addHearts(number){
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* HOME */
 
 function renderHome(){
   document.getElementById("homeInfo").textContent=
     completed.length+" von "+lessons.length+
-    " Lektionen geschafft ❤️";
+    " Lektionen geschafft · "+
+    completed.length+" de "+lessons.length+
+    " lecciones completadas ❤️";
 }
 
 
-/* =========================
-   LEKTIONSLISTE
-========================= */
+/* LEKTIONSLISTE */
 
 function renderLessons(){
   let html="";
@@ -1246,7 +1277,7 @@ function renderLessons(){
     html+=`
       <div class="lesson ${done?"done":""}">
         <div class="small">
-          LEKTION ${i+1} VON ${lessons.length}
+          LEKTION ${i+1} · LECCIÓN ${i+1} / ${lessons.length}
           ${done?" · ✅ geschafft":""}
         </div>
 
@@ -1254,7 +1285,7 @@ function renderLessons(){
         <div class="topic">${lesson.es}</div>
 
         <button onclick="openLesson(${i})">
-          ${done?"Wiederholen":"Lernen"} →
+          ${done?"Wiederholen · Repetir":"Lernen · Aprender"} →
         </button>
       </div>
     `;
@@ -1264,38 +1295,36 @@ function renderLessons(){
 }
 
 
-/* =========================
-   LERNEN
-========================= */
+/* LERNEN */
 
 let currentLesson=0;
 
 function openLesson(i){
   currentLesson=i;
-
   const lesson=lessons[i];
 
-  document.getElementById("learnNumber").textContent=
-    "Lektion "+(i+1);
+  document.getElementById("learnNumber").innerHTML=
+    "Lektion "+(i+1)+" · Lección "+(i+1);
 
   document.getElementById("learnTitle").textContent=lesson.title;
   document.getElementById("learnSpanish").textContent=lesson.es;
 
   let html=`
     <div class="tip">
-      <b>💡 Gramática</b><br>
-      ${lesson.grammar}
+      <b>💡 Grammatik · Gramática</b><br><br>
+      <b>🇩🇪 ${lesson.grammar}</b><br>
+      <span class="spanish">🇨🇴 ${lesson.grammarEs}</span>
     </div>
 
     <div class="card">
-      <h3>📚 Palabras importantes</h3>
+      <h3>📚 Wörter · Palabras importantes</h3>
   `;
 
   lesson.words.forEach(word=>{
     html+=`
       <div class="word">
-        <b>${word[0]}</b>
-        <div>${word[1]}</div>
+        <b>🇩🇪 ${word[0]}</b>
+        <div>🇨🇴 ${word[1]}</div>
       </div>
     `;
   });
@@ -1303,14 +1332,14 @@ function openLesson(i){
   html+=`
     </div>
     <div class="card">
-      <h3>💬 Beispiele</h3>
+      <h3>💬 Beispiele · Ejemplos</h3>
   `;
 
   lesson.examples.forEach(example=>{
     html+=`
       <div class="word">
-        <b>${example[0]}</b>
-        <div class="example">${example[1]}</div>
+        <b>🇩🇪 ${example[0]}</b>
+        <div class="example">🇨🇴 ${example[1]}</div>
       </div>
     `;
   });
@@ -1318,14 +1347,11 @@ function openLesson(i){
   html+="</div>";
 
   document.getElementById("learnContent").innerHTML=html;
-
   screen("learn");
 }
 
 
-/* =========================
-   QUIZ
-========================= */
+/* QUIZ */
 
 let qIndex=0;
 let correctAnswers=0;
@@ -1345,7 +1371,7 @@ function showQuestion(){
   const q=quiz[qIndex];
 
   document.getElementById("questionNumber").textContent=
-    "Pregunta "+(qIndex+1)+" de "+quiz.length;
+    "Frage "+(qIndex+1)+" · Pregunta "+(qIndex+1)+" de "+quiz.length;
 
   document.getElementById("question").textContent=q[0];
 
@@ -1360,8 +1386,7 @@ function showQuestion(){
 
   q[1].forEach((answer,i)=>{
     html+=`
-      <button class="option"
-        onclick="answerQuestion(${i},this)">
+      <button class="option" onclick="answerQuestion(${i},this)">
         ${answer}
       </button>
     `;
@@ -1372,7 +1397,6 @@ function showQuestion(){
 
 function answerQuestion(i,button){
   if(answered) return;
-
   answered=true;
 
   const q=lessons[currentLesson].quiz[qIndex];
@@ -1385,11 +1409,15 @@ function answerQuestion(i,button){
 
     addHearts(3);
 
-    feedback.innerHTML="❤️ ¡Muy bien! +3 corazones";
+    feedback.innerHTML=
+      "❤️ Richtig! · ¡Muy bien!<br><b>+3 ❤️</b>";
+
     feedback.style.background="#dff5e5";
 
+    /* Alex spricht */
     playAlex("correct");
 
+    /* gelegentlich gemeinsames Foto */
     if(Math.random()<0.45){
       document.getElementById("memoryImg").src=getPhoto();
       document.getElementById("memory").style.display="block";
@@ -1400,7 +1428,9 @@ function answerQuestion(i,button){
     options[q[2]].classList.add("correct");
 
     feedback.innerHTML=
-      "Casi ❤️ Mira la respuesta correcta y recuérdala.";
+      "Fast! ❤️ · Casi ❤️<br>"+
+      "Schau dir die richtige Antwort an.<br>"+
+      "<span class='small'>Mira la respuesta correcta.</span>";
 
     feedback.style.background="#ffe6e6";
   }
@@ -1420,13 +1450,10 @@ function nextQuestion(){
 }
 
 
-/* =========================
-   ABSCHLUSS
-========================= */
+/* LEKTION ABSCHLIESSEN */
 
 function finishLesson(){
   const firstTime=!completed.includes(currentLesson);
-
   let bonus=0;
 
   if(firstTime){
@@ -1447,25 +1474,26 @@ function finishLesson(){
   }
 
   if(firstTime){
-    document.getElementById("earned").textContent=
+    document.getElementById("earned").innerHTML=
       correctAnswers===5
-      ? "❤️ +20 Bonus · Perfekt!"
-      : "❤️ +10 Bonus";
+      ? "❤️ +20 Bonus<br><span class='small'>Perfekt · ¡Perfecto!</span>"
+      : "❤️ +10 Bonus<br><span class='small'>Sehr gut · ¡Muy bien!</span>";
   }else{
-    document.getElementById("earned").textContent=
-      "❤️ Sehr gut wiederholt!";
+    document.getElementById("earned").innerHTML=
+      "❤️ Sehr gut wiederholt!<br>"+
+      "<span class='small'>¡Muy bien repetido!</span>";
   }
 
   document.getElementById("successImg").src=getPhoto();
 
+  /* Alex gratuliert */
   playAlex("lesson");
+
   screen("success");
 }
 
 
-/* =========================
-   BELOHNUNGEN
-========================= */
+/* BELOHNUNGEN */
 
 function renderRewards(){
   let html="";
@@ -1476,7 +1504,10 @@ function renderRewards(){
     html+=`
       <div class="reward">
         <div class="rewardTop">
-          <div class="rewardName">${reward.name}</div>
+          <div>
+            <div class="rewardName">${reward.name}</div>
+            <div class="small">${reward.es}</div>
+          </div>
           <div class="price">${reward.price} ❤️</div>
         </div>
 
@@ -1486,8 +1517,8 @@ function renderRewards(){
 
           ${
             possible
-            ? "Canjear ❤️"
-            : "Faltan "+(reward.price-hearts)+" ❤️"
+            ? "Einlösen · Canjear ❤️"
+            : "Noch "+(reward.price-hearts)+" ❤️ · Faltan "+(reward.price-hearts)+" ❤️"
           }
 
         </button>
@@ -1496,7 +1527,6 @@ function renderRewards(){
   });
 
   document.getElementById("rewardList").innerHTML=html;
-
   renderHistory();
 }
 
@@ -1507,7 +1537,7 @@ function redeem(i){
 
   const yes=confirm(
     "¿Quieres usar "+reward.price+
-    " ❤️ para:\n\n"+reward.name+"?"
+    " ❤️ para:\n\n"+reward.es+"?"
   );
 
   if(!yes) return;
@@ -1530,7 +1560,7 @@ function redeem(i){
 
   alert(
     "❤️ ¡Recompensa desbloqueada!\n\n"+
-    reward.name+
+    reward.es+
     "\n\nAhora Alex tiene que cumplirla 😄"
   );
 }
@@ -1540,7 +1570,7 @@ function renderHistory(){
 
   if(!rewardHistory.length){
     box.innerHTML=
-      '<p class="small">Todavía no has canjeado ninguna recompensa.</p>';
+      '<p class="small">Noch nichts eingelöst · Todavía no has canjeado ninguna recompensa.</p>';
     return;
   }
 
@@ -1553,9 +1583,7 @@ function renderHistory(){
 }
 
 
-/* =========================
-   START
-========================= */
+/* START */
 
 updateHearts();
 renderHome();
