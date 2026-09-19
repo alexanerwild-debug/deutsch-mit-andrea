@@ -2,131 +2,124 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FCD116">
 <title>Deutsch mit Andrea ❤️</title>
 
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-body{background:#fff9e8;color:#202020}
-button{font:inherit}
-.app{max-width:700px;margin:auto;min-height:100vh;background:#fff9e8}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:#fff9ed;color:#222
+}
+button{font:inherit;cursor:pointer}
+.app{max-width:700px;margin:auto;min-height:100vh}
+.screen{display:none;min-height:100vh}
+.screen.active{display:block}
 
-/* START */
 .hero{
-  height:52vh;
-  min-height:430px;
-  background-image:url("./IMG_4100.jpeg");
-  background-size:cover;
-  background-position:center 38%;
-  background-repeat:no-repeat;
+  height:48vh;min-height:390px;
+  background:url("./IMG_4100.jpeg") center 38%/cover no-repeat
 }
-.startBox{
-  text-align:center;
-  padding:24px 24px 45px;
-}
-.flags{font-size:27px;margin-bottom:5px}
-h1{font-size:34px;margin:4px 0 5px;font-weight:850}
-.subtitle{font-size:17px;color:#666;margin-bottom:18px}
+.start{text-align:center;padding:22px 22px 40px}
+.flags{font-size:29px}
+h1{font-size:34px;margin:8px 0 3px}
+.sub{color:#666;line-height:1.45}
 .badge{
-  display:inline-block;background:#FCD116;padding:8px 22px;
-  border-radius:30px;font-weight:800;margin:6px
+  display:inline-block;background:#FCD116;padding:8px 20px;
+  border-radius:30px;font-weight:800;margin:13px
 }
-.progressText{margin:12px;color:#666;font-size:15px}
-.mainButton{
-  width:100%;border:0;border-radius:20px;padding:18px;
-  background:#003893;color:white;font-size:20px;font-weight:800;
-  box-shadow:0 7px 17px rgba(0,0,0,.14);margin-top:12px
-}
-.mainButton:active,.option:active{transform:scale(.98)}
+.heartsBig{font-size:29px;font-weight:900;color:#c51d34;margin:12px}
+.small{font-size:14px;color:#777}
 
-/* HEADER */
-.topbar{
-  position:sticky;top:0;z-index:10;
-  background:#FCD116;padding:14px 17px;
-  display:flex;align-items:center;justify-content:space-between;
+.main,.secondary{
+  width:100%;padding:16px;border-radius:18px;
+  font-weight:850;font-size:18px;margin-top:11px
+}
+.main{border:0;background:#003893;color:#fff}
+.secondary{background:#fff;border:2px solid #003893;color:#003893}
+
+.top{
+  position:sticky;top:0;z-index:10;background:#FCD116;
+  padding:12px 15px;display:flex;align-items:center;
+  justify-content:space-between
 }
 .back{
-  border:0;background:rgba(255,255,255,.7);
-  width:42px;height:42px;border-radius:50%;font-size:21px
+  border:0;background:#fff;border-radius:50%;
+  width:42px;height:42px;font-size:23px
 }
-.score{font-weight:800}
+.hcount{font-weight:900;color:#a71930}
+.content{padding:20px}
 
-/* CONTENT */
-.screen{display:none}
-.screen.active{display:block}
-.content{padding:22px}
-.lessonTitle{font-size:27px;font-weight:850;margin:4px 0}
-.lessonSub{color:#666;margin:5px 0 22px}
-.progressBar{
-  width:100%;height:9px;background:#e8e8e8;border-radius:20px;
-  overflow:hidden;margin:12px 0 22px
+.lesson,.card,.reward,.balance{
+  background:#fff;border-radius:19px;padding:18px;margin:13px 0;
+  box-shadow:0 4px 14px rgba(0,0,0,.07)
 }
-.progressFill{height:100%;background:#003893;width:0%;transition:.3s}
+.lesson.done{border:2px solid #48a65d}
+.lessonTitle{font-size:20px;font-weight:900;margin:5px 0}
+.topic{color:#666}
+.lesson button{
+  width:100%;border:0;background:#003893;color:#fff;
+  padding:13px;border-radius:14px;font-weight:850;margin-top:12px
+}
 
-/* CARDS */
-.card{
-  background:white;border-radius:20px;padding:20px;margin:15px 0;
-  box-shadow:0 4px 15px rgba(0,0,0,.08)
+.progress{
+  height:9px;background:#ddd;border-radius:20px;
+  overflow:hidden;margin:15px 0
 }
-.card h3{margin-top:0}
-.german{font-size:22px;font-weight:800;color:#003893}
-.spanish{font-size:17px;color:#555;margin-top:5px}
+.fill{height:100%;background:#003893}
+
 .tip{
-  background:#fff2b8;border-radius:15px;padding:15px;
-  margin:15px 0;line-height:1.45
+  background:#fff0ad;border-radius:16px;padding:15px;
+  margin:14px 0;line-height:1.5
 }
-.wordRow{
-  padding:13px 0;border-bottom:1px solid #eee
-}
-.wordRow:last-child{border:0}
-.word{font-size:19px;font-weight:800}
-.meaning{color:#666;margin-top:3px}
+.word{padding:11px 0;border-bottom:1px solid #eee}
+.word:last-child{border-bottom:0}
+.word b{font-size:18px;color:#003893}
+.example{color:#666;margin-top:4px}
 
-/* QUIZ */
-.question{
-  font-size:21px;font-weight:800;line-height:1.35;
-  margin-bottom:18px
-}
 .option{
-  width:100%;padding:16px;margin:7px 0;border:2px solid #e5e5e5;
-  border-radius:16px;background:white;text-align:left;font-size:17px
+  width:100%;text-align:left;padding:15px;border-radius:14px;
+  border:2px solid #eee;background:#fff;margin:6px 0
 }
-.correct{background:#dff6e5!important;border-color:#3ba55d!important}
-.wrong{background:#ffe2e2!important;border-color:#d63d3d!important}
+.correct{background:#dff5e5!important;border-color:#39a35b!important}
+.wrong{background:#ffe1e1!important;border-color:#d43e3e!important}
+
 .feedback{
-  display:none;padding:16px;border-radius:15px;
-  margin:16px 0;font-weight:700
-}
-.nextButton{
-  display:none;width:100%;border:0;border-radius:17px;padding:17px;
-  background:#003893;color:white;font-weight:800;font-size:18px
+  display:none;padding:15px;border-radius:14px;
+  margin:14px 0;font-weight:800
 }
 
-/* LESSON LIST */
-.lessonItem{
-  background:white;border-radius:19px;padding:18px;margin:13px 0;
-  box-shadow:0 3px 12px rgba(0,0,0,.07)
+.memory{
+  display:none;background:#fff;border-radius:20px;padding:10px;
+  text-align:center;margin:16px 0;
+  box-shadow:0 5px 17px rgba(0,0,0,.12)
 }
-.lessonNumber{font-size:13px;color:#777;font-weight:700}
-.lessonName{font-size:20px;font-weight:850;margin:5px 0}
-.lessonInfo{color:#666;font-size:15px}
-.lessonItem button{
-  width:100%;border:0;border-radius:14px;padding:13px;
-  margin-top:12px;background:#003893;color:white;font-weight:800
+.memory img{
+  width:100%;max-height:450px;object-fit:cover;border-radius:15px
 }
-.completed{border:2px solid #47a764}
+.memory p{font-weight:800;margin:10px}
 
-/* SUCCESS */
-.success{text-align:center;padding:45px 25px}
+.success{text-align:center;padding:35px 20px}
 .bigHeart{font-size:70px}
-.success h2{font-size:31px}
-.successPoints{font-size:25px;font-weight:850;color:#003893}
 
-/* BOTTOM */
-.footerLine{height:7px;background:#CE1126}
-.small{font-size:14px;color:#777}
+.balance{text-align:center}
+.balance strong{font-size:38px;color:#c51d34}
+
+.rewardTop{display:flex;justify-content:space-between;gap:12px}
+.rewardName{font-size:18px;font-weight:850}
+.price{font-weight:900;color:#c51d34;white-space:nowrap}
+.reward button{
+  width:100%;border:0;background:#CE1126;color:#fff;
+  padding:13px;border-radius:13px;margin-top:12px;font-weight:850
+}
+.reward button:disabled{background:#bbb}
+
+.history{
+  background:#eee;border-radius:12px;padding:11px;
+  margin:7px 0;font-size:14px
+}
 </style>
 </head>
 
@@ -137,114 +130,128 @@ h1{font-size:34px;margin:4px 0 5px;font-weight:850}
 <section id="home" class="screen active">
   <div class="hero"></div>
 
-  <div class="startBox">
+  <div class="start">
     <div class="flags">🇨🇴 ❤️ 🇩🇪</div>
     <h1>Deutsch mit Andrea</h1>
-    <div class="subtitle">Tu camino hacia el alemán</div>
+    <div class="sub">Tu camino hacia el alemán</div>
 
-    <div class="badge">Nivel A2</div>
+    <div class="badge">Deutsch A2</div>
 
-    <div class="progressText" id="homeProgress">
-      Empieza hoy tu camino A2 ❤️
+    <div class="heartsBig">
+      ❤️ <span class="hearts">0</span>
     </div>
+    <div class="small">Tus corazones</div>
 
-    <button class="mainButton" onclick="showLessons()">
-      Empezar 🇩🇪
-    </button>
+    <button class="main" onclick="showLessons()">Weiterlernen 🇩🇪</button>
+    <button class="secondary" onclick="showRewards()">🎁 Mis recompensas</button>
 
-    <p class="small">Paso a paso. Jeden Tag ein bisschen. ❤️</p>
+    <p class="small" id="homeInfo"></p>
   </div>
-
-  <div class="footerLine"></div>
 </section>
 
-<!-- LESSON LIST -->
+<!-- LEKTIONEN -->
 <section id="lessons" class="screen">
-  <div class="topbar">
+  <div class="top">
     <button class="back" onclick="goHome()">‹</button>
-    <strong>Deutsch A2</strong>
-    <div class="score">⭐ <span class="points">0</span></div>
+    <b>Deutsch A2</b>
+    <span class="hcount">❤️ <span class="hearts">0</span></span>
   </div>
 
   <div class="content">
-    <h2>Hola Andrea ❤️</h2>
-    <p>Elige tu lección de hoy.</p>
-
+    <h2>Dein A2-Kurs 🇩🇪</h2>
+    <p class="sub">Paso a paso hacia un alemán mejor. ❤️</p>
     <div id="lessonList"></div>
   </div>
 </section>
 
-<!-- LEARNING -->
-<section id="learning" class="screen">
-  <div class="topbar">
+<!-- LERNEN -->
+<section id="learn" class="screen">
+  <div class="top">
     <button class="back" onclick="showLessons()">‹</button>
-    <strong id="headerLesson">Lección</strong>
-    <div class="score">⭐ <span class="points">0</span></div>
+    <b id="learnNumber">Lektion</b>
+    <span class="hcount">❤️ <span class="hearts">0</span></span>
   </div>
 
   <div class="content">
-    <div class="lessonTitle" id="lessonTitle"></div>
-    <div class="lessonSub" id="lessonSubtitle"></div>
+    <h2 id="learnTitle"></h2>
+    <p class="sub" id="learnSpanish"></p>
 
-    <div class="progressBar">
-      <div class="progressFill" id="learnProgress"></div>
-    </div>
+    <div id="learnContent"></div>
 
-    <div id="learningContent"></div>
-
-    <button class="mainButton" onclick="startQuiz()">
-      Empezar el test →
-    </button>
+    <button class="main" onclick="startQuiz()">Empezar el test →</button>
   </div>
 </section>
 
 <!-- QUIZ -->
 <section id="quiz" class="screen">
-  <div class="topbar">
+  <div class="top">
     <button class="back" onclick="showLessons()">‹</button>
-    <strong>Test A2</strong>
-    <div class="score">⭐ <span class="points">0</span></div>
+    <b>Quiz</b>
+    <span class="hcount">❤️ <span class="hearts">0</span></span>
   </div>
 
   <div class="content">
-    <div class="progressBar">
-      <div class="progressFill" id="quizProgress"></div>
-    </div>
+    <div class="progress"><div id="quizFill" class="fill"></div></div>
 
     <div class="card">
-      <div class="question" id="question"></div>
+      <div class="small" id="questionNumber"></div>
+      <h3 id="question"></h3>
       <div id="answers"></div>
     </div>
 
-    <div class="feedback" id="feedback"></div>
+    <div id="feedback" class="feedback"></div>
 
-    <button class="nextButton" id="nextButton" onclick="nextQuestion()">
+    <div id="memory" class="memory">
+      <img id="memoryImg" alt="Recuerdo">
+      <p>Un pequeño recuerdo para ti ❤️</p>
+    </div>
+
+    <button id="next" class="main" style="display:none" onclick="nextQuestion()">
       Siguiente →
     </button>
   </div>
 </section>
 
-<!-- SUCCESS -->
+<!-- ERFOLG -->
 <section id="success" class="screen">
   <div class="success">
     <div class="bigHeart">❤️</div>
     <h2>¡Muy bien, Andrea!</h2>
+    <p>Du hast die Lektion geschafft.</p>
 
-    <p>Has terminado la lección.</p>
+    <div id="earned" class="heartsBig"></div>
 
-    <div class="successPoints">
-      +<span id="earnedPoints">0</span> puntos ⭐
+    <div class="memory" style="display:block">
+      <img id="successImg" alt="Recuerdo">
+      <p>Ein schöner Moment für dich ❤️</p>
     </div>
 
-    <div class="card">
-      <div class="german">Super gemacht!</div>
-      <div class="spanish">¡Lo has hecho genial!</div>
-      <p>🇨🇴 ❤️ 🇩🇪</p>
+    <button class="main" onclick="showLessons()">Weiterlernen 🇩🇪</button>
+    <button class="secondary" onclick="showRewards()">🎁 Mis recompensas</button>
+  </div>
+</section>
+
+<!-- BELOHNUNGEN -->
+<section id="rewards" class="screen">
+  <div class="top">
+    <button class="back" onclick="goHome()">‹</button>
+    <b>Mis recompensas</b>
+    <span>🎁</span>
+  </div>
+
+  <div class="content">
+    <div class="balance">
+      <div>Tienes</div>
+      <strong>❤️ <span class="hearts">0</span></strong>
+      <p class="small">
+        Aprende alemán y guarda tus corazones para algo especial.
+      </p>
     </div>
 
-    <button class="mainButton" onclick="showLessons()">
-      Continuar
-    </button>
+    <div id="rewardList"></div>
+
+    <h3>Ya canjeado</h3>
+    <div id="history"></div>
   </div>
 </section>
 
@@ -252,458 +259,1306 @@ h1{font-size:34px;margin:4px 0 5px;font-weight:850}
 
 <script>
 
-/* ===============================
-   DATEN DER 6 A2-LEKTIONEN
-================================ */
+/* =========================
+   SPEICHER
+========================= */
+
+let hearts = Number(localStorage.getItem("andreaHearts")) || 0;
+
+let completed =
+  JSON.parse(localStorage.getItem("andreaCompleted") || "[]");
+
+let rewardHistory =
+  JSON.parse(localStorage.getItem("andreaRewards") || "[]");
+
+
+/* =========================
+   ALEX' STIMME
+   Wird später aktiviert.
+========================= */
+
+const alexVoice = {
+  correct:[
+    "super-baby.m4a",
+    "sehr-gut-andrea.m4a",
+    "perfekt.m4a",
+    "weiter-so-mi-amor.m4a"
+  ],
+  lesson:[
+    "stolz-auf-dich.m4a",
+    "richtig-gut-gemacht.m4a"
+  ]
+};
+
+const voiceEnabled = false;
+
+function playAlex(type){
+  if(!voiceEnabled) return;
+
+  const list=alexVoice[type];
+  if(!list || !list.length) return;
+
+  const file=list[Math.floor(Math.random()*list.length)];
+  new Audio(file).play().catch(()=>{});
+}
+
+
+/* =========================
+   FOTOS
+   NUR DATEIEN, DIE WIR
+   IM REPOSITORY GESEHEN HABEN
+========================= */
+
+const photos = [
+  "IMG_1700.jpeg",
+  "IMG_1706.jpeg",
+  "IMG_1708.jpeg",
+  "IMG_2210.jpeg",
+  "IMG_2688.jpeg",
+  "IMG_2696.jpeg",
+  "IMG_3385.jpeg",
+  "IMG_3387.jpeg",
+  "IMG_3409.jpeg",
+  "IMG_3410.jpeg",
+  "IMG_3411.jpeg",
+  "IMG_3421.jpeg",
+  "IMG_3422.jpeg",
+  "IMG_3423.jpeg",
+  "IMG_3425.jpeg",
+  "IMG_3427.jpeg",
+  "IMG_3433.jpeg",
+  "IMG_3434.jpeg",
+  "IMG_4098.jpeg",
+  "IMG_4100.jpeg",
+  "IMG_4131.jpeg",
+  "IMG_4133.jpeg",
+  "IMG_4139.jpeg",
+  "IMG_4140.jpeg",
+  "IMG_4141.jpeg"
+];
+
+let photoBag=[];
+
+function getPhoto(){
+  if(photoBag.length===0){
+    photoBag=[...photos].sort(()=>Math.random()-.5);
+  }
+  return photoBag.pop();
+}
+
+
+/* =========================
+   A2 LEKTIONEN
+========================= */
 
 const lessons = [
 
-{
- title:"Mein Alltag",
- subtitle:"Mi rutina diaria · Verbos separables",
- words:[
-  ["aufstehen","levantarse"],
-  ["frühstücken","desayunar"],
-  ["arbeiten","trabajar"],
-  ["einkaufen","hacer compras"],
-  ["nach Hause kommen","volver a casa"],
-  ["anfangen","empezar"]
- ],
- examples:[
-  ["Ich stehe um sieben Uhr auf.","Me levanto a las siete."],
-  ["Ich frühstücke jeden Morgen.","Desayuno todas las mañanas."],
-  ["Ich kaufe nach der Arbeit ein.","Hago compras después del trabajo."],
-  ["Ich komme um sechs Uhr nach Hause.","Vuelvo a casa a las seis."]
- ],
- grammar:"Los verbos separables se dividen en una oración principal: aufstehen → Ich stehe um 7 Uhr auf.",
- quiz:[
-  ["Was bedeutet „aufstehen“?",["levantarse","dormir","trabajar"],0],
-  ["Ich ___ um sieben Uhr auf.",["stehe","steht","stehen"],0],
-  ["¿Qué significa „Ich kaufe ein“?",["Trabajo","Hago compras","Duermo"],1],
-  ["Wo steht „auf“? – Ich stehe um 7 Uhr ___.",["auf","an","ein"],0],
-  ["„nach Hause kommen“ significa…",["salir de casa","volver a casa","ir al trabajo"],1]
- ]
-},
+L(
+"Mein Alltag",
+"Mi rutina diaria",
+"Trennbare Verben: Das Präfix steht im Hauptsatz am Ende.",
+[
+["aufstehen","levantarse"],
+["frühstücken","desayunar"],
+["arbeiten","trabajar"],
+["einkaufen","hacer compras"],
+["anfangen","empezar"],
+["nach Hause kommen","volver a casa"]
+],
+[
+["Ich stehe um sieben Uhr auf.","Me levanto a las siete."],
+["Die Arbeit fängt um neun Uhr an.","El trabajo empieza a las nueve."]
+],
+[
+Q("Ich ___ um 7 Uhr auf.",["stehe","bin","habe"],0),
+Q("einkaufen bedeutet …",["hacer compras","dormir","cocinar"],0),
+Q("Der Kurs ___ um neun Uhr an.",["fängt","geht","kommt"],0),
+Q("Ich komme ___ Hause.",["nach","bei","aus"],0),
+Q("frühstücken =",["desayunar","cenar","viajar"],0)
+]),
 
-{
- title:"Termine & Uhrzeit",
- subtitle:"Citas, horarios y planes",
- words:[
-  ["der Termin","la cita"],
-  ["pünktlich","puntual"],
-  ["verschieben","aplazar"],
-  ["vereinbaren","acordar"],
-  ["Zeit haben","tener tiempo"],
-  ["sich treffen","encontrarse"]
- ],
- examples:[
-  ["Ich habe morgen einen Termin.","Tengo una cita mañana."],
-  ["Können wir den Termin verschieben?","¿Podemos aplazar la cita?"],
-  ["Wir treffen uns um halb acht.","Nos encontramos a las siete y media."],
-  ["Hast du am Freitag Zeit?","¿Tienes tiempo el viernes?"]
- ],
- grammar:"En alemán, „halb acht“ significa 7:30, literalmente media hora antes de las ocho.",
- quiz:[
-  ["„der Termin“ significa…",["la cita","el tren","la tienda"],0],
-  ["Was bedeutet „halb acht“?",["8:30","7:30","7:15"],1],
-  ["Können wir den Termin ___?",["verschieben","schlafen","essen"],0],
-  ["„pünktlich“ significa…",["tarde","rápido","puntual"],2],
-  ["Hast du morgen ___?",["Zeit","Haus","Zug"],0]
- ]
-},
+L(
+"Termine & Uhrzeit",
+"Citas, horarios y planes",
+"Für Uhrzeiten benutzen wir meistens „um“.",
+[
+["der Termin","la cita"],
+["pünktlich","puntual"],
+["verschieben","aplazar"],
+["vereinbaren","acordar"],
+["sich treffen","encontrarse"],
+["Zeit haben","tener tiempo"]
+],
+[
+["Ich habe um zehn Uhr einen Termin.","Tengo una cita a las diez."],
+["Können wir den Termin verschieben?","¿Podemos aplazar la cita?"]
+],
+[
+Q("Ich habe ___ 10 Uhr einen Termin.",["um","am","im"],0),
+Q("pünktlich =",["puntual","tarde","rápido"],0),
+Q("Termin verschieben =",["aplazar","pagar","buscar"],0),
+Q("Wir ___ uns morgen.",["treffen","fahren","essen"],0),
+Q("Hast du heute ___?",["Zeit","Uhr","Preis"],0)
+]),
 
-{
- title:"Einkaufen",
- subtitle:"Compras, precios y comparaciones",
- words:[
-  ["günstig","económico"],
-  ["teuer","caro"],
-  ["bezahlen","pagar"],
-  ["kosten","costar"],
-  ["umtauschen","cambiar/devolver"],
-  ["die Rechnung","la cuenta / factura"]
- ],
- examples:[
-  ["Wie viel kostet das?","¿Cuánto cuesta eso?"],
-  ["Das ist mir zu teuer.","Eso es demasiado caro para mí."],
-  ["Kann ich mit Karte bezahlen?","¿Puedo pagar con tarjeta?"],
-  ["Ich möchte das umtauschen.","Quiero cambiar/devolver esto."]
- ],
- grammar:"Para comparar usamos: günstig → günstiger; teuer → teurer. Beispiel: Dieses Hotel ist günstiger.",
- quiz:[
-  ["„günstig“ bedeutet…",["económico","caro","cerrado"],0],
-  ["Wie viel ___ das?",["kostet","bezahlt","kauft"],0],
-  ["Ich möchte mit Karte ___.",["bezahlen","fahren","sprechen"],0],
-  ["„teurer“ significa…",["más barato","más caro","más pequeño"],1],
-  ["Ich möchte das ___.",["umtauschen","aufstehen","treffen"],0]
- ]
-},
+L(
+"Einkaufen",
+"Compras y precios",
+"Komparativ: günstig → günstiger, teuer → teurer.",
+[
+["günstig","económico"],
+["teuer","caro"],
+["bezahlen","pagar"],
+["kosten","costar"],
+["umtauschen","cambiar/devolver"],
+["die Rechnung","la cuenta"]
+],
+[
+["Wie viel kostet das?","¿Cuánto cuesta eso?"],
+["Diese Hose ist günstiger.","Este pantalón es más barato."]
+],
+[
+Q("teuer →",["teurer","teuerer","teure"],0),
+Q("bezahlen =",["pagar","buscar","viajar"],0),
+Q("Wie viel ___ das?",["kostet","bezahlt","kauft"],0),
+Q("die Rechnung =",["la cuenta","la tienda","el tren"],0),
+Q("günstiger =",["más barato","más caro","más tarde"],0)
+]),
 
-{
- title:"Reisen & Orientierung",
- subtitle:"Viajes, trenes y direcciones",
- words:[
-  ["der Bahnhof","la estación"],
-  ["umsteigen","hacer transbordo"],
-  ["aussteigen","bajarse"],
-  ["die Verspätung","el retraso"],
-  ["geradeaus","todo recto"],
-  ["die Richtung","la dirección"]
- ],
- examples:[
-  ["Wo muss ich umsteigen?","¿Dónde tengo que hacer transbordo?"],
-  ["Wir steigen in Zürich aus.","Nos bajamos en Zúrich."],
-  ["Der Zug hat Verspätung.","El tren tiene retraso."],
-  ["Gehen Sie geradeaus.","Siga todo recto."]
- ],
- grammar:"Con los verbos modales, el infinitivo va al final: Wo muss ich aussteigen?",
- quiz:[
-  ["„Verspätung“ bedeutet…",["retraso","billete","estación"],0],
-  ["Wo muss ich ___?",["umsteigen","bezahlen","frühstücken"],0],
-  ["Der Zug hat ___.",["Richtung","Verspätung","Rechnung"],1],
-  ["„geradeaus“ significa…",["a la izquierda","todo recto","atrás"],1],
-  ["Wir ___ in Zürich aus.",["steigen","stehen","stellen"],0]
- ]
-},
+L(
+"Im Restaurant",
+"En el restaurante",
+"Höfliche Wünsche: „Ich hätte gern …“",
+[
+["bestellen","pedir"],
+["die Speisekarte","el menú"],
+["das Getränk","la bebida"],
+["die Rechnung","la cuenta"],
+["lecker","rico"],
+["reservieren","reservar"]
+],
+[
+["Ich hätte gern einen Kaffee.","Quisiera un café."],
+["Die Rechnung, bitte.","La cuenta, por favor."]
+],
+[
+Q("Ich ___ gern einen Kaffee.",["hätte","hat","bin"],0),
+Q("Speisekarte =",["menú","factura","calle"],0),
+Q("lecker =",["rico","caro","frío"],0),
+Q("Wir möchten einen Tisch ___.",["reservieren","fahren","tragen"],0),
+Q("Die ___, bitte.",["Rechnung","Wohnung","Straße"],0)
+]),
 
-{
- title:"Was hast du gemacht?",
- subtitle:"El pasado · Perfekt",
- words:[
-  ["gemacht","hecho"],
-  ["gegessen","comido"],
-  ["gesehen","visto"],
-  ["gefahren","viajado / ido"],
-  ["gekauft","comprado"],
-  ["gesprochen","hablado"]
- ],
- examples:[
-  ["Ich habe heute gearbeitet.","He trabajado hoy."],
-  ["Wir haben zusammen gegessen.","Hemos comido juntos."],
-  ["Ich bin nach Berlin gefahren.","He ido a Berlín."],
-  ["Was hast du gestern gemacht?","¿Qué hiciste ayer?"]
- ],
- grammar:"El Perfekt normalmente usa haben + participio. Verbos de movimiento suelen usar sein: Ich bin gefahren.",
- quiz:[
-  ["Ich ___ gestern gearbeitet.",["habe","bin","werde"],0],
-  ["Ich bin nach Berlin ___.",["gefahren","gemacht","gekauft"],0],
-  ["„gegessen“ significa…",["bebido","comido","visto"],1],
-  ["Was hast du gestern ___?",["gemacht","machen","macht"],0],
-  ["Wir ___ zusammen gegessen.",["sind","haben","werden"],1]
- ]
-},
+L(
+"Wohnen",
+"Vivienda y hogar",
+"Nach „mit“ steht der Dativ.",
+[
+["die Wohnung","el apartamento"],
+["die Miete","el alquiler"],
+["der Nachbar","el vecino"],
+["umziehen","mudarse"],
+["der Schlüssel","la llave"],
+["der Vermieter","el propietario"]
+],
+[
+["Die Wohnung ist sehr hell.","El apartamento es muy luminoso."],
+["Ich spreche mit dem Vermieter.","Hablo con el propietario."]
+],
+[
+Q("Miete =",["alquiler","llave","mesa"],0),
+Q("mit ___ Vermieter",["dem","den","der"],0),
+Q("umziehen =",["mudarse","dormir","comer"],0),
+Q("Schlüssel =",["llave","puerta","ventana"],0),
+Q("Die ___ ist hell.",["Wohnung","Zug","Arbeit"],0)
+]),
 
-{
- title:"weil · dass · wenn",
- subtitle:"Construir frases A2 más largas",
- words:[
-  ["weil","porque"],
-  ["dass","que"],
-  ["wenn","si / cuando"],
-  ["müde","cansado/a"],
-  ["glücklich","feliz"],
-  ["lernen","aprender"]
- ],
- examples:[
-  ["Ich lerne Deutsch, weil ich in Deutschland lebe.","Aprendo alemán porque vivo en Alemania."],
-  ["Ich glaube, dass Deutsch interessant ist.","Creo que el alemán es interesante."],
-  ["Wenn ich Zeit habe, lerne ich Deutsch.","Cuando tengo tiempo, estudio alemán."],
-  ["Ich bin müde, weil ich viel gearbeitet habe.","Estoy cansada porque he trabajado mucho."]
- ],
- grammar:"Después de weil, dass y wenn, el verbo conjugado va normalmente al final de la oración subordinada.",
- quiz:[
-  ["„weil“ significa…",["pero","porque","aunque"],1],
-  ["Ich lerne Deutsch, weil ich in Deutschland ___.",["lebe","leben","lebt"],0],
-  ["Ich glaube, ___ Deutsch interessant ist.",["weil","dass","oder"],1],
-  ["Wenn ich Zeit ___, lerne ich Deutsch.",["habe","bin","hat"],0],
-  ["Wo steht das Verb im Nebensatz?",["am Anfang","normalmente al final","siempre en segunda posición"],1]
- ]
-}
+L(
+"Reisen & Bahn",
+"Viajes, trenes y transporte",
+"Modalverb + Infinitiv: Der Infinitiv steht am Satzende.",
+[
+["der Bahnhof","la estación"],
+["umsteigen","hacer transbordo"],
+["aussteigen","bajarse"],
+["die Verspätung","el retraso"],
+["der Bahnsteig","el andén"],
+["die Fahrkarte","el billete"]
+],
+[
+["Sie müssen in Köln umsteigen.","Tiene que hacer transbordo en Colonia."],
+["Der Zug hat zehn Minuten Verspätung.","El tren tiene diez minutos de retraso."]
+],
+[
+Q("Bahnhof =",["estación","hotel","restaurante"],0),
+Q("Verspätung =",["retraso","billete","salida"],0),
+Q("Ich muss in Zürich ___.",["aussteigen","bezahlen","wohnen"],0),
+Q("Bahnsteig =",["andén","calle","puerta"],0),
+Q("Sie müssen hier ___.",["umsteigen","essen","schlafen"],0)
+]),
+
+L(
+"Wegbeschreibung",
+"Preguntar y explicar el camino",
+"Imperativ und Richtungsangaben helfen bei Wegbeschreibungen.",
+[
+["geradeaus","todo recto"],
+["links","izquierda"],
+["rechts","derecha"],
+["die Kreuzung","el cruce"],
+["abbiegen","girar"],
+["gegenüber","enfrente"]
+],
+[
+["Gehen Sie geradeaus.","Vaya todo recto."],
+["An der Kreuzung biegen Sie links ab.","En el cruce gire a la izquierda."]
+],
+[
+Q("geradeaus =",["todo recto","atrás","arriba"],0),
+Q("rechts =",["derecha","izquierda","centro"],0),
+Q("Kreuzung =",["cruce","estación","puente"],0),
+Q("abbiegen =",["girar","esperar","pagar"],0),
+Q("gegenüber =",["enfrente","detrás","lejos"],0)
+]),
+
+L(
+"Arbeit & Beruf",
+"Trabajo y profesión",
+"Modalverben: müssen, können, dürfen.",
+[
+["der Beruf","la profesión"],
+["die Bewerbung","la solicitud"],
+["der Kollege","el compañero"],
+["die Aufgabe","la tarea"],
+["verdienen","ganar"],
+["die Arbeitszeit","el horario laboral"]
+],
+[
+["Ich muss heute arbeiten.","Tengo que trabajar hoy."],
+["Kannst du diese Aufgabe machen?","¿Puedes hacer esta tarea?"]
+],
+[
+Q("Beruf =",["profesión","vacaciones","casa"],0),
+Q("Kollege =",["compañero","billete","médico"],0),
+Q("Ich ___ heute arbeiten.",["muss","bin","habe"],0),
+Q("verdienen =",["ganar","perder","comprar"],0),
+Q("Aufgabe =",["tarea","cita","viaje"],0)
+]),
+
+L(
+"Telefonieren",
+"Hablar por teléfono",
+"Am Telefon benutzen wir oft höfliche Fragen.",
+[
+["anrufen","llamar"],
+["zurückrufen","devolver la llamada"],
+["die Nachricht","el mensaje"],
+["erreichen","contactar"],
+["verbinden","comunicar"],
+["besetzt","ocupado"]
+],
+[
+["Kann ich Sie später zurückrufen?","¿Puedo devolverle la llamada más tarde?"],
+["Die Leitung ist besetzt.","La línea está ocupada."]
+],
+[
+Q("anrufen =",["llamar","escribir","visitar"],0),
+Q("besetzt =",["ocupado","libre","barato"],0),
+Q("Ich rufe dich später ___.",["zurück","ein","aus"],0),
+Q("Nachricht =",["mensaje","número","precio"],0),
+Q("Können Sie mich ___?",["verbinden","wohnen","essen"],0)
+]),
+
+L(
+"Beim Arzt",
+"En el médico",
+"„seit“ beschreibt etwas, das in der Vergangenheit begann und noch gilt.",
+[
+["die Schmerzen","los dolores"],
+["krank","enfermo"],
+["das Rezept","la receta"],
+["die Untersuchung","el examen médico"],
+["die Apotheke","la farmacia"],
+["seit","desde/hace"]
+],
+[
+["Ich habe seit gestern Schmerzen.","Tengo dolores desde ayer."],
+["Der Arzt gibt mir ein Rezept.","El médico me da una receta."]
+],
+[
+Q("Apotheke =",["farmacia","escuela","tienda"],0),
+Q("Ich habe ___ gestern Schmerzen.",["seit","um","gegen"],0),
+Q("Rezept =",["receta","cuenta","billete"],0),
+Q("krank =",["enfermo","sano","rápido"],0),
+Q("Der Arzt macht eine ___.",["Untersuchung","Reise","Miete"],0)
+]),
+
+L(
+"Körper & Gesundheit",
+"El cuerpo y la salud",
+"Reflexive Verben: ich fühle mich, du fühlst dich.",
+[
+["sich fühlen","sentirse"],
+["der Rücken","la espalda"],
+["der Kopf","la cabeza"],
+["müde","cansado"],
+["gesund","sano"],
+["sich verletzen","lesionarse"]
+],
+[
+["Ich fühle mich heute gut.","Me siento bien hoy."],
+["Mein Rücken tut weh.","Me duele la espalda."]
+],
+[
+Q("Rücken =",["espalda","cabeza","mano"],0),
+Q("Ich fühle ___ gut.",["mich","mir","mein"],0),
+Q("gesund =",["sano","enfermo","triste"],0),
+Q("müde =",["cansado","caro","rápido"],0),
+Q("Mein Kopf tut ___.",["weh","gut","gern"],0)
+]),
+
+L(
+"Kleidung",
+"Ropa y apariencia",
+"Mit „passen“ sagen wir, ob Kleidung die richtige Größe hat.",
+[
+["die Jacke","la chaqueta"],
+["das Kleid","el vestido"],
+["die Größe","la talla"],
+["passen","quedar bien"],
+["anziehen","ponerse"],
+["tragen","llevar"]
+],
+[
+["Die Jacke passt mir gut.","La chaqueta me queda bien."],
+["Heute trage ich ein Kleid.","Hoy llevo un vestido."]
+],
+[
+Q("Kleid =",["vestido","zapato","sombrero"],0),
+Q("Die Jacke ___ mir.",["passt","fährt","isst"],0),
+Q("Größe =",["talla","precio","calle"],0),
+Q("anziehen =",["ponerse","pagar","reservar"],0),
+Q("Ich ___ heute eine Jacke.",["trage","wohne","fahre"],0)
+]),
+
+L(
+"Wetter",
+"El tiempo",
+"Für Wetter benutzen wir oft das unpersönliche „es“.",
+[
+["sonnig","soleado"],
+["bewölkt","nublado"],
+["regnen","llover"],
+["kalt","frío"],
+["warm","cálido"],
+["das Gewitter","la tormenta"]
+],
+[
+["Heute ist es sonnig.","Hoy está soleado."],
+["Morgen wird es wärmer.","Mañana hará más calor."]
+],
+[
+Q("sonnig =",["soleado","nublado","frío"],0),
+Q("Es ___ heute.",["regnet","regnen","Regen"],0),
+Q("Gewitter =",["tormenta","sol","playa"],0),
+Q("Morgen wird es ___.",["wärmer","warmste","Wärme"],0),
+Q("bewölkt =",["nublado","seco","caliente"],0)
+]),
+
+L(
+"Freizeit",
+"Tiempo libre",
+"gern → lieber → am liebsten.",
+[
+["spazieren gehen","pasear"],
+["Sport treiben","hacer deporte"],
+["sich entspannen","relajarse"],
+["das Hobby","el hobby"],
+["lieber","preferiblemente"],
+["am liebsten","lo que más gusta"]
+],
+[
+["Ich gehe gern spazieren.","Me gusta pasear."],
+["Am liebsten reise ich.","Lo que más me gusta es viajar."]
+],
+[
+Q("am liebsten =",["lo que más gusta","nunca","ayer"],0),
+Q("Ich gehe gern ___.",["spazieren","Termin","Miete"],0),
+Q("Hobby =",["pasatiempo","trabajo","factura"],0),
+Q("sich entspannen =",["relajarse","trabajar","levantarse"],0),
+Q("gern → ___ → am liebsten",["lieber","mehr","größer"],0)
+]),
+
+L(
+"Gefühle & Beziehungen",
+"Sentimientos y relaciones",
+"Mit „dass“ steht das konjugierte Verb am Ende.",
+[
+["glücklich","feliz"],
+["traurig","triste"],
+["vermissen","extrañar"],
+["vertrauen","confiar"],
+["sich freuen","alegrarse"],
+["lieben","amar"]
+],
+[
+["Ich freue mich, dich zu sehen.","Me alegra verte."],
+["Ich glaube, dass du recht hast.","Creo que tienes razón."]
+],
+[
+Q("glücklich =",["feliz","triste","cansado"],0),
+Q("vermissen =",["extrañar","olvidar","pagar"],0),
+Q("Ich glaube, dass du recht ___.",["hast","haben","hat"],0),
+Q("vertrauen =",["confiar","viajar","comprar"],0),
+Q("Ich freue ___ auf dich.",["mich","mir","mein"],0)
+]),
+
+L(
+"Einladungen",
+"Invitaciones y encuentros",
+"Mit „würde“ und „könnte“ klingen Wünsche höflicher.",
+[
+["einladen","invitar"],
+["die Einladung","la invitación"],
+["zusagen","aceptar"],
+["absagen","cancelar"],
+["mitbringen","traer"],
+["feiern","celebrar"]
+],
+[
+["Ich würde dich gern einladen.","Me gustaría invitarte."],
+["Kannst du etwas mitbringen?","¿Puedes traer algo?"]
+],
+[
+Q("einladen =",["invitar","cancelar","pagar"],0),
+Q("absagen =",["cancelar","aceptar","celebrar"],0),
+Q("Ich ___ dich gern einladen.",["würde","werde","bin"],0),
+Q("mitbringen =",["traer","comprar","dormir"],0),
+Q("Wir ___ morgen.",["feiern","wohnen","zahlen"],0)
+]),
+
+L(
+"Perfekt mit haben",
+"El pasado con haben",
+"haben + Partizip II.",
+[
+["gemacht","hecho"],
+["gekauft","comprado"],
+["gegessen","comido"],
+["gelernt","aprendido"],
+["gesehen","visto"],
+["gesprochen","hablado"]
+],
+[
+["Ich habe Deutsch gelernt.","He aprendido alemán."],
+["Wir haben Pizza gegessen.","Hemos comido pizza."]
+],
+[
+Q("Ich ___ Deutsch gelernt.",["habe","bin","werde"],0),
+Q("essen →",["gegessen","geessen","geesst"],0),
+Q("sehen →",["gesehen","geseht","gesieht"],0),
+Q("Wir haben Pizza ___.",["gegessen","essen","geesst"],0),
+Q("machen →",["gemacht","gemachen","macht"],0)
+]),
+
+L(
+"Perfekt mit sein",
+"El pasado con sein",
+"Bei Bewegung und Zustandswechsel benutzen wir oft „sein“.",
+[
+["gefahren","viajado/conducido"],
+["gegangen","ido"],
+["gekommen","venido"],
+["geflogen","volado"],
+["geblieben","quedado"],
+["aufgestanden","levantado"]
+],
+[
+["Ich bin nach Berlin gefahren.","He viajado a Berlín."],
+["Sie ist früh aufgestanden.","Ella se levantó temprano."]
+],
+[
+Q("Ich ___ nach Berlin gefahren.",["bin","habe","werde"],0),
+Q("gehen →",["gegangen","gegeht","gegehen"],0),
+Q("kommen →",["gekommen","gekommt","kommen"],0),
+Q("Sie ist zu Hause ___.",["geblieben","gemacht","gehabt"],0),
+Q("fliegen →",["geflogen","gefliegt","gefliegen"],0)
+]),
+
+L(
+"Präteritum",
+"Pasado de sein, haben y modales",
+"Im Alltag sind war, hatte, konnte, musste und wollte sehr wichtig.",
+[
+["war","era/estaba"],
+["hatte","tenía"],
+["konnte","podía"],
+["musste","tenía que"],
+["wollte","quería"],
+["durfte","tenía permiso"]
+],
+[
+["Ich war gestern müde.","Ayer estaba cansada."],
+["Ich musste arbeiten.","Tenía que trabajar."]
+],
+[
+Q("sein → Präteritum",["war","hatte","bin"],0),
+Q("haben →",["hatte","war","habe"],0),
+Q("müssen →",["musste","müsste","gemusst"],0),
+Q("können →",["konnte","kannte","könnte"],0),
+Q("Ich ___ nach Hause.",["wollte","willte","gewollt"],0)
+]),
+
+L(
+"Akkusativ & Dativ",
+"Acusativo y dativo",
+"Beispiel: Ich gebe DEM Mann DEN Schlüssel.",
+[
+["geben","dar"],
+["helfen","ayudar"],
+["zeigen","mostrar"],
+["schicken","enviar"],
+["bringen","traer"],
+["erklären","explicar"]
+],
+[
+["Ich helfe dem Mann.","Ayudo al hombre."],
+["Ich gebe der Frau den Schlüssel.","Le doy la llave a la mujer."]
+],
+[
+Q("Ich helfe ___ Mann.",["dem","den","der"],0),
+Q("Ich gebe ___ Frau den Schlüssel.",["der","die","den"],0),
+Q("helfen braucht meistens …",["Dativ","Akkusativ","Perfekt"],0),
+Q("Ich sehe ___ Mann.",["den","dem","der"],0),
+Q("geben =",["dar","buscar","dormir"],0)
+]),
+
+L(
+"Wechselpräpositionen",
+"Lugar y movimiento",
+"Wo? = Dativ. Wohin? = Akkusativ.",
+[
+["auf","sobre"],
+["unter","debajo"],
+["neben","al lado"],
+["zwischen","entre"],
+["vor","delante"],
+["hinter","detrás"]
+],
+[
+["Das Buch liegt auf dem Tisch.","El libro está sobre la mesa."],
+["Ich lege das Buch auf den Tisch.","Pongo el libro sobre la mesa."]
+],
+[
+Q("Wo? →",["Dativ","Akkusativ","Perfekt"],0),
+Q("Wohin? →",["Akkusativ","Dativ","Präteritum"],0),
+Q("auf dem Tisch =",["sobre la mesa","bajo la mesa","en la calle"],0),
+Q("zwischen =",["entre","sobre","delante"],0),
+Q("unter =",["debajo","encima","junto"],0)
+]),
+
+L(
+"Reflexive Verben",
+"Verbos reflexivos",
+"ich freue mich · du freust dich · wir freuen uns.",
+[
+["sich freuen","alegrarse"],
+["sich erinnern","acordarse"],
+["sich interessieren","interesarse"],
+["sich treffen","encontrarse"],
+["sich beeilen","darse prisa"],
+["sich fühlen","sentirse"]
+],
+[
+["Ich freue mich auf dich.","Me alegro de verte."],
+["Wir treffen uns morgen.","Nos vemos mañana."]
+],
+[
+Q("Ich freue ___.",["mich","mir","dich"],0),
+Q("Wir treffen ___.",["uns","euch","mich"],0),
+Q("sich beeilen =",["darse prisa","dormir","sentarse"],0),
+Q("Du fühlst ___ gut.",["dich","dir","sich"],0),
+Q("sich erinnern =",["acordarse","olvidar","comprar"],0)
+]),
+
+L(
+"Vergleichen",
+"Comparativo y superlativo",
+"gut → besser → am besten.",
+[
+["besser","mejor"],
+["größer","más grande"],
+["kleiner","más pequeño"],
+["schneller","más rápido"],
+["am besten","el mejor"],
+["genauso","igual de"]
+],
+[
+["Berlin ist größer als Kassel.","Berlín es más grande que Kassel."],
+["Das gefällt mir am besten.","Eso es lo que más me gusta."]
+],
+[
+Q("gut →",["besser","guter","mehr gut"],0),
+Q("groß →",["größer","großer","großest"],0),
+Q("Unterschied: größer ___",["als","wie","wenn"],0),
+Q("gleich: genauso … ___",["wie","als","dass"],0),
+Q("Superlativ von gut =",["am besten","am guter","besser"],0)
+]),
+
+L(
+"weil & dass",
+"Frases subordinadas",
+"Nach weil und dass steht das konjugierte Verb am Ende.",
+[
+["weil","porque"],
+["dass","que"],
+["glauben","creer"],
+["wissen","saber"],
+["denken","pensar"],
+["hoffen","esperar"]
+],
+[
+["Ich lerne Deutsch, weil ich in Deutschland lebe.","Aprendo alemán porque vivo en Alemania."],
+["Ich glaube, dass er kommt.","Creo que viene."]
+],
+[
+Q("weil =",["porque","aunque","cuando"],0),
+Q("Nach weil steht das Verb …",["am Ende","am Anfang","immer Position 2"],0),
+Q("Ich glaube, dass er morgen ___.",["kommt","kommen","komme"],0),
+Q("hoffen =",["esperar","olvidar","pagar"],0),
+Q("Ich bleibe hier, weil ich müde ___.",["bin","ist","sein"],0)
+]),
+
+L(
+"wenn",
+"Cuando y si",
+"„wenn“ benutzen wir für Bedingungen und wiederholte Situationen.",
+[
+["wenn","si/cuando"],
+["immer","siempre"],
+["manchmal","a veces"],
+["falls","en caso de que"],
+["passieren","pasar"],
+["möglich","posible"]
+],
+[
+["Wenn ich Zeit habe, komme ich.","Si tengo tiempo, voy."],
+["Wenn es regnet, bleibe ich zu Hause.","Cuando llueve, me quedo en casa."]
+],
+[
+Q("wenn =",["si/cuando","porque","que"],0),
+Q("Wenn ich Zeit ___, komme ich.",["habe","hat","haben"],0),
+Q("manchmal =",["a veces","siempre","nunca"],0),
+Q("möglich =",["posible","caro","rápido"],0),
+Q("Wenn es regnet, ___ ich zu Hause.",["bleibe","bleibt","bleiben"],0)
+]),
+
+L(
+"deshalb & trotzdem",
+"Por eso y sin embargo",
+"Nach deshalb/trotzdem kommt das Verb direkt danach.",
+[
+["deshalb","por eso"],
+["trotzdem","sin embargo"],
+["darum","por eso"],
+["obwohl","aunque"],
+["der Grund","la razón"],
+["die Folge","la consecuencia"]
+],
+[
+["Ich bin müde. Deshalb gehe ich schlafen.","Estoy cansada. Por eso voy a dormir."],
+["Es regnet. Trotzdem gehe ich raus.","Llueve. Sin embargo salgo."]
+],
+[
+Q("deshalb =",["por eso","aunque","quizás"],0),
+Q("trotzdem =",["sin embargo","porque","ayer"],0),
+Q("Deshalb ___ ich nach Hause.",["gehe","ich gehe","gehen"],0),
+Q("Grund =",["razón","resultado","pregunta"],0),
+Q("obwohl =",["aunque","porque","siempre"],0)
+]),
+
+L(
+"Relativsätze",
+"Oraciones relativas",
+"Relativpronomen + Verb am Ende.",
+[
+["der","el que"],
+["die","la que"],
+["das","lo que"],
+["kennen","conocer"],
+["gehören","pertenecer"],
+["besuchen","visitar"]
+],
+[
+["Das ist der Mann, der hier arbeitet.","Ese es el hombre que trabaja aquí."],
+["Das ist die Frau, die ich kenne.","Esa es la mujer que conozco."]
+],
+[
+Q("Der Mann, ___ hier arbeitet.",["der","den","dem"],0),
+Q("Die Frau, ___ ich kenne.",["die","der","dem"],0),
+Q("Im Relativsatz steht das Verb …",["am Ende","am Anfang","immer Position 2"],0),
+Q("kennen =",["conocer","viajar","pagar"],0),
+Q("Das Haus, ___ dort steht.",["das","der","den"],0)
+]),
+
+L(
+"Verben mit Präpositionen",
+"Verbos con preposición",
+"Viele deutsche Verben haben eine feste Präposition.",
+[
+["warten auf","esperar a"],
+["denken an","pensar en"],
+["sprechen über","hablar de"],
+["sich freuen auf","esperar con ilusión"],
+["Angst haben vor","tener miedo de"],
+["sich interessieren für","interesarse por"]
+],
+[
+["Ich warte auf den Bus.","Espero el autobús."],
+["Ich denke an dich.","Pienso en ti."]
+],
+[
+Q("warten ___",["auf","an","über"],0),
+Q("denken ___",["an","auf","für"],0),
+Q("sprechen ___",["über","vor","an"],0),
+Q("interessieren ___",["für","auf","mit"],0),
+Q("Angst haben ___",["vor","über","für"],0)
+]),
+
+L(
+"Adjektivendungen",
+"Terminaciones de adjetivos",
+"Zum Beispiel: ein guter Kaffee · eine schöne Stadt · ein neues Auto.",
+[
+["schön","bonito"],
+["neu","nuevo"],
+["alt","viejo"],
+["interessant","interesante"],
+["freundlich","amable"],
+["wichtig","importante"]
+],
+[
+["Das ist ein guter Kaffee.","Es un buen café."],
+["Berlin ist eine interessante Stadt.","Berlín es una ciudad interesante."]
+],
+[
+Q("ein gut___ Kaffee",["er","e","es"],0),
+Q("eine schön___ Stadt",["e","er","en"],0),
+Q("ein neu___ Auto",["es","er","e"],0),
+Q("freundlich =",["amable","caro","triste"],0),
+Q("eine interessant___ Frau",["e","er","es"],0)
+]),
+
+L(
+"Pläne & Zukunft",
+"Planes y futuro",
+"werden + Infinitiv oder Präsens für feste Pläne.",
+[
+["planen","planear"],
+["vorhaben","tener pensado"],
+["werden","auxiliar de futuro"],
+["nächstes Jahr","el próximo año"],
+["bald","pronto"],
+["später","más tarde"]
+],
+[
+["Ich werde morgen arbeiten.","Trabajaré mañana."],
+["Nächstes Jahr reise ich nach Spanien.","El próximo año viajo a España."]
+],
+[
+Q("Ich ___ morgen arbeiten.",["werde","bin","habe"],0),
+Q("bald =",["pronto","ayer","nunca"],0),
+Q("nächstes Jahr =",["el próximo año","el año pasado","hoy"],0),
+Q("planen =",["planear","olvidar","pagar"],0),
+Q("Ich habe viel ___.",["vor","an","auf"],0)
+]),
+
+L(
+"Behörden & Formulare",
+"Administración y formularios",
+"Formelle Sprache ist für Alltag und Behörden wichtig.",
+[
+["der Antrag","la solicitud"],
+["ausfüllen","rellenar"],
+["unterschreiben","firmar"],
+["der Ausweis","el documento de identidad"],
+["die Anmeldung","el registro"],
+["die Unterlagen","los documentos"]
+],
+[
+["Bitte füllen Sie das Formular aus.","Por favor, rellene el formulario."],
+["Ich brauche Ihren Ausweis.","Necesito su documento de identidad."]
+],
+[
+Q("Antrag =",["solicitud","factura","cita"],0),
+Q("ausfüllen =",["rellenar","firmar","dormir"],0),
+Q("Ausweis =",["documento de identidad","billete","receta"],0),
+Q("unterschreiben =",["firmar","leer","pagar"],0),
+Q("Unterlagen =",["documentos","ropa","comida"],0)
+]),
+
+L(
+"Probleme lösen",
+"Resolver problemas",
+"Höfliche Beschwerden und Bitten.",
+[
+["das Problem","el problema"],
+["kaputt","roto"],
+["funktionieren","funcionar"],
+["reklamieren","reclamar"],
+["lösen","resolver"],
+["sich beschweren","quejarse"]
+],
+[
+["Das Gerät funktioniert nicht.","El aparato no funciona."],
+["Ich möchte das reklamieren.","Quiero reclamar esto."]
+],
+[
+Q("kaputt =",["roto","nuevo","caro"],0),
+Q("lösen =",["resolver","comprar","dormir"],0),
+Q("Das Gerät ___ nicht.",["funktioniert","funktionieren","funktioniere"],0),
+Q("reklamieren =",["reclamar","reservar","viajar"],0),
+Q("sich beschweren =",["quejarse","alegrarse","levantarse"],0)
+]),
+
+L(
+"A2 Abschluss",
+"Repaso y preparación final",
+"Jetzt kombinierst du Alltag, Vergangenheit, Nebensätze und Kommunikation.",
+[
+["die Erfahrung","la experiencia"],
+["erzählen","contar"],
+["begründen","justificar"],
+["beschreiben","describir"],
+["vergleichen","comparar"],
+["verbessern","mejorar"]
+],
+[
+["Ich möchte von meiner Reise erzählen.","Quiero contar mi viaje."],
+["Ich lerne Deutsch, weil ich mich verbessern möchte.","Aprendo alemán porque quiero mejorar."]
+],
+[
+Q("erzählen =",["contar","pagar","esperar"],0),
+Q("beschreiben =",["describir","comprar","cerrar"],0),
+Q("vergleichen =",["comparar","viajar","firmar"],0),
+Q("weil → Verb …",["am Ende","am Anfang","Position 2"],0),
+Q("verbessern =",["mejorar","empeorar","olvidar"],0)
+])
 
 ];
 
 
-/* ===============================
-   STATUS
-================================ */
+/* Helfer für Lektionen */
 
-let currentLesson = 0;
-let currentQuestion = 0;
-let lessonScore = 0;
+function L(title,es,grammar,words,examples,quiz){
+  return {title,es,grammar,words,examples,quiz};
+}
 
-let totalPoints =
- parseInt(localStorage.getItem("andreaPoints") || "0");
-
-let completed =
- JSON.parse(localStorage.getItem("andreaCompleted") || "[]");
-
-
-function updatePoints(){
- document.querySelectorAll(".points")
- .forEach(el=>el.textContent=totalPoints);
+function Q(text,answers,correct){
+  return [text,answers,correct];
 }
 
 
-/* ===============================
+/* =========================
+   BELOHNUNGEN
+========================= */
+
+const rewards=[
+  {name:"🍦 Eis mit Alex",price:200},
+  {name:"💆‍♀️ Massage von Alex",price:400},
+  {name:"🎬 Du bestimmst unseren gemeinsamen Abend",price:600},
+  {name:"🍽️ Romantisches Dinner mit Alex",price:800},
+  {name:"🔥 Tiempo íntimo con Alex",price:1000},
+  {name:"🎁 Große Überraschung von Alex",price:1500}
+];
+
+
+/* =========================
    NAVIGATION
-================================ */
+========================= */
 
-function showScreen(id){
- document.querySelectorAll(".screen")
- .forEach(s=>s.classList.remove("active"));
+function screen(id){
+  document.querySelectorAll(".screen")
+    .forEach(x=>x.classList.remove("active"));
 
- document.getElementById(id).classList.add("active");
-
- window.scrollTo(0,0);
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
+  updateHearts();
 }
 
 function goHome(){
- updateHome();
- showScreen("home");
+  renderHome();
+  screen("home");
 }
 
 function showLessons(){
- renderLessonList();
- updatePoints();
- showScreen("lessons");
+  renderLessons();
+  screen("lessons");
+}
+
+function showRewards(){
+  renderRewards();
+  screen("rewards");
 }
 
 
-/* ===============================
+/* =========================
+   HERZEN
+========================= */
+
+function updateHearts(){
+  document.querySelectorAll(".hearts")
+    .forEach(x=>x.textContent=hearts);
+}
+
+function saveHearts(){
+  localStorage.setItem("andreaHearts",String(hearts));
+  updateHearts();
+}
+
+function addHearts(number){
+  hearts+=number;
+  saveHearts();
+}
+
+
+/* =========================
    HOME
-================================ */
+========================= */
 
-function updateHome(){
-
- const el=document.getElementById("homeProgress");
-
- if(completed.length===0){
-   el.textContent="Empieza hoy tu camino A2 ❤️";
- }else{
-   el.textContent=
-   completed.length+" de "+lessons.length+
-   " lecciones completadas · ⭐ "+totalPoints;
- }
+function renderHome(){
+  document.getElementById("homeInfo").textContent=
+    completed.length+" von "+lessons.length+
+    " Lektionen geschafft ❤️";
 }
 
 
-/* ===============================
-   LEKTIONEN
-================================ */
+/* =========================
+   LEKTIONSLISTE
+========================= */
 
-function renderLessonList(){
+function renderLessons(){
+  let html="";
 
- const box=document.getElementById("lessonList");
- box.innerHTML="";
+  lessons.forEach((lesson,i)=>{
+    const done=completed.includes(i);
 
- lessons.forEach((l,i)=>{
+    html+=`
+      <div class="lesson ${done?"done":""}">
+        <div class="small">
+          LEKTION ${i+1} VON ${lessons.length}
+          ${done?" · ✅ geschafft":""}
+        </div>
 
-   const done=completed.includes(i);
+        <div class="lessonTitle">${lesson.title}</div>
+        <div class="topic">${lesson.es}</div>
 
-   const div=document.createElement("div");
-   div.className="lessonItem "+(done?"completed":"");
+        <button onclick="openLesson(${i})">
+          ${done?"Wiederholen":"Lernen"} →
+        </button>
+      </div>
+    `;
+  });
 
-   div.innerHTML=`
-    <div class="lessonNumber">
-      LECCIÓN ${i+1} DE ${lessons.length}
-      ${done?" · ✅ COMPLETADA":""}
-    </div>
-
-    <div class="lessonName">${l.title}</div>
-    <div class="lessonInfo">${l.subtitle}</div>
-
-    <button onclick="openLesson(${i})">
-      ${done?"Repetir":"Aprender"} →
-    </button>
-   `;
-
-   box.appendChild(div);
- });
+  document.getElementById("lessonList").innerHTML=html;
 }
 
 
-function openLesson(index){
+/* =========================
+   LERNEN
+========================= */
 
- currentLesson=index;
+let currentLesson=0;
 
- const l=lessons[index];
+function openLesson(i){
+  currentLesson=i;
 
- document.getElementById("headerLesson").textContent=
- "Lección "+(index+1);
+  const lesson=lessons[i];
 
- document.getElementById("lessonTitle").textContent=l.title;
- document.getElementById("lessonSubtitle").textContent=l.subtitle;
+  document.getElementById("learnNumber").textContent=
+    "Lektion "+(i+1);
 
- document.getElementById("learnProgress").style.width="50%";
+  document.getElementById("learnTitle").textContent=lesson.title;
+  document.getElementById("learnSpanish").textContent=lesson.es;
 
- let html=`
- <div class="card">
-   <h3>📚 Vocabulario</h3>
- `;
-
- l.words.forEach(w=>{
-   html+=`
-    <div class="wordRow">
-      <div class="word">${w[0]}</div>
-      <div class="meaning">${w[1]}</div>
+  let html=`
+    <div class="tip">
+      <b>💡 Gramática</b><br>
+      ${lesson.grammar}
     </div>
-   `;
- });
 
- html+=`</div>
+    <div class="card">
+      <h3>📚 Palabras importantes</h3>
+  `;
 
- <div class="card">
-   <h3>💬 Ejemplos</h3>
- `;
+  lesson.words.forEach(word=>{
+    html+=`
+      <div class="word">
+        <b>${word[0]}</b>
+        <div>${word[1]}</div>
+      </div>
+    `;
+  });
 
- l.examples.forEach(e=>{
-   html+=`
-    <div class="wordRow">
-      <div class="german">${e[0]}</div>
-      <div class="spanish">${e[1]}</div>
+  html+=`
     </div>
-   `;
- });
+    <div class="card">
+      <h3>💬 Beispiele</h3>
+  `;
 
- html+=`
- </div>
+  lesson.examples.forEach(example=>{
+    html+=`
+      <div class="word">
+        <b>${example[0]}</b>
+        <div class="example">${example[1]}</div>
+      </div>
+    `;
+  });
 
- <div class="tip">
-   <strong>💡 Gramática</strong><br><br>
-   ${l.grammar}
- </div>
- `;
+  html+="</div>";
 
- document.getElementById("learningContent").innerHTML=html;
+  document.getElementById("learnContent").innerHTML=html;
 
- showScreen("learning");
+  screen("learn");
 }
 
 
-/* ===============================
+/* =========================
    QUIZ
-================================ */
+========================= */
+
+let qIndex=0;
+let correctAnswers=0;
+let answered=false;
 
 function startQuiz(){
-
- currentQuestion=0;
- lessonScore=0;
-
- showScreen("quiz");
- renderQuestion();
+  qIndex=0;
+  correctAnswers=0;
+  screen("quiz");
+  showQuestion();
 }
 
+function showQuestion(){
+  answered=false;
 
-function renderQuestion(){
+  const quiz=lessons[currentLesson].quiz;
+  const q=quiz[qIndex];
 
- const quiz=lessons[currentLesson].quiz;
- const q=quiz[currentQuestion];
+  document.getElementById("questionNumber").textContent=
+    "Pregunta "+(qIndex+1)+" de "+quiz.length;
 
- document.getElementById("quizProgress").style.width=
- ((currentQuestion)/quiz.length*100)+"%";
+  document.getElementById("question").textContent=q[0];
 
- document.getElementById("question").innerHTML=
- `Pregunta ${currentQuestion+1} de ${quiz.length}<br><br>${q[0]}`;
+  document.getElementById("quizFill").style.width=
+    (((qIndex+1)/quiz.length)*100)+"%";
 
- const answers=document.getElementById("answers");
- answers.innerHTML="";
+  document.getElementById("feedback").style.display="none";
+  document.getElementById("memory").style.display="none";
+  document.getElementById("next").style.display="none";
 
- q[1].forEach((answer,index)=>{
+  let html="";
 
-   const button=document.createElement("button");
-   button.className="option";
-   button.textContent=answer;
+  q[1].forEach((answer,i)=>{
+    html+=`
+      <button class="option"
+        onclick="answerQuestion(${i},this)">
+        ${answer}
+      </button>
+    `;
+  });
 
-   button.onclick=()=>answerQuestion(button,index,q[2]);
-
-   answers.appendChild(button);
- });
-
- document.getElementById("feedback").style.display="none";
- document.getElementById("nextButton").style.display="none";
+  document.getElementById("answers").innerHTML=html;
 }
 
+function answerQuestion(i,button){
+  if(answered) return;
 
-function answerQuestion(button,selected,correct){
+  answered=true;
 
- const buttons=document.querySelectorAll(".option");
+  const q=lessons[currentLesson].quiz[qIndex];
+  const options=document.querySelectorAll(".option");
+  const feedback=document.getElementById("feedback");
 
- buttons.forEach(b=>b.disabled=true);
+  if(i===q[2]){
+    button.classList.add("correct");
+    correctAnswers++;
 
- const feedback=document.getElementById("feedback");
+    addHearts(3);
 
- if(selected===correct){
+    feedback.innerHTML="❤️ ¡Muy bien! +3 corazones";
+    feedback.style.background="#dff5e5";
 
-   button.classList.add("correct");
+    playAlex("correct");
 
-   feedback.innerHTML="❤️ ¡Muy bien! <strong>Richtig!</strong>";
-   feedback.style.background="#dff6e5";
+    if(Math.random()<0.45){
+      document.getElementById("memoryImg").src=getPhoto();
+      document.getElementById("memory").style.display="block";
+    }
 
-   lessonScore+=10;
+  }else{
+    button.classList.add("wrong");
+    options[q[2]].classList.add("correct");
 
- }else{
+    feedback.innerHTML=
+      "Casi ❤️ Mira la respuesta correcta y recuérdala.";
 
-   button.classList.add("wrong");
-   buttons[correct].classList.add("correct");
+    feedback.style.background="#ffe6e6";
+  }
 
-   feedback.innerHTML=
-   "Casi ❤️ Mira la respuesta correcta y recuérdala para la próxima vez.";
-
-   feedback.style.background="#ffe9c9";
- }
-
- feedback.style.display="block";
-
- document.getElementById("nextButton").style.display="block";
+  feedback.style.display="block";
+  document.getElementById("next").style.display="block";
 }
-
 
 function nextQuestion(){
+  qIndex++;
 
- const quiz=lessons[currentLesson].quiz;
-
- currentQuestion++;
-
- if(currentQuestion<quiz.length){
-   renderQuestion();
- }else{
-   finishLesson();
- }
+  if(qIndex<lessons[currentLesson].quiz.length){
+    showQuestion();
+  }else{
+    finishLesson();
+  }
 }
 
 
-/* ===============================
-   ERFOLG
-================================ */
+/* =========================
+   ABSCHLUSS
+========================= */
 
 function finishLesson(){
+  const firstTime=!completed.includes(currentLesson);
 
- totalPoints+=lessonScore;
+  let bonus=0;
 
- localStorage.setItem("andreaPoints",totalPoints);
+  if(firstTime){
+    bonus=10;
 
- if(!completed.includes(currentLesson)){
-   completed.push(currentLesson);
-   localStorage.setItem(
-     "andreaCompleted",
-     JSON.stringify(completed)
-   );
- }
+    if(correctAnswers===5){
+      bonus+=10;
+    }
 
- document.getElementById("earnedPoints").textContent=lessonScore;
+    completed.push(currentLesson);
 
- updatePoints();
+    localStorage.setItem(
+      "andreaCompleted",
+      JSON.stringify(completed)
+    );
 
- showScreen("success");
+    addHearts(bonus);
+  }
+
+  if(firstTime){
+    document.getElementById("earned").textContent=
+      correctAnswers===5
+      ? "❤️ +20 Bonus · Perfekt!"
+      : "❤️ +10 Bonus";
+  }else{
+    document.getElementById("earned").textContent=
+      "❤️ Sehr gut wiederholt!";
+  }
+
+  document.getElementById("successImg").src=getPhoto();
+
+  playAlex("lesson");
+  screen("success");
 }
 
 
-/* ===============================
-   START
-================================ */
+/* =========================
+   BELOHNUNGEN
+========================= */
 
-updatePoints();
-updateHome();
+function renderRewards(){
+  let html="";
+
+  rewards.forEach((reward,i)=>{
+    const possible=hearts>=reward.price;
+
+    html+=`
+      <div class="reward">
+        <div class="rewardTop">
+          <div class="rewardName">${reward.name}</div>
+          <div class="price">${reward.price} ❤️</div>
+        </div>
+
+        <button
+          ${possible?"":"disabled"}
+          onclick="redeem(${i})">
+
+          ${
+            possible
+            ? "Canjear ❤️"
+            : "Faltan "+(reward.price-hearts)+" ❤️"
+          }
+
+        </button>
+      </div>
+    `;
+  });
+
+  document.getElementById("rewardList").innerHTML=html;
+
+  renderHistory();
+}
+
+function redeem(i){
+  const reward=rewards[i];
+
+  if(hearts<reward.price) return;
+
+  const yes=confirm(
+    "¿Quieres usar "+reward.price+
+    " ❤️ para:\n\n"+reward.name+"?"
+  );
+
+  if(!yes) return;
+
+  hearts-=reward.price;
+
+  rewardHistory.unshift({
+    name:reward.name,
+    price:reward.price,
+    date:new Date().toLocaleDateString("es-ES")
+  });
+
+  localStorage.setItem(
+    "andreaRewards",
+    JSON.stringify(rewardHistory)
+  );
+
+  saveHearts();
+  renderRewards();
+
+  alert(
+    "❤️ ¡Recompensa desbloqueada!\n\n"+
+    reward.name+
+    "\n\nAhora Alex tiene que cumplirla 😄"
+  );
+}
+
+function renderHistory(){
+  const box=document.getElementById("history");
+
+  if(!rewardHistory.length){
+    box.innerHTML=
+      '<p class="small">Todavía no has canjeado ninguna recompensa.</p>';
+    return;
+  }
+
+  box.innerHTML=rewardHistory.map(item=>`
+    <div class="history">
+      ${item.name}<br>
+      ❤️ ${item.price} · ${item.date}
+    </div>
+  `).join("");
+}
+
+
+/* =========================
+   START
+========================= */
+
+updateHearts();
+renderHome();
 
 </script>
 </body>
